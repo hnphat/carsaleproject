@@ -19,7 +19,7 @@ const mix = require('laravel-mix');
 //    .sass('src/app.scss', 'css')
 //    .setPublicPath('dist');    
 // mix.postCss('src/app.css', 'dist', [
-//     require('postcss-custom-properties')
+//     require('precss')() 
 // ]);
 // mix.js('src/app.js', 'js')
 //    .version(); => Sau khi được biên dịch, hàm băm có thể được truy xuất từ mix-manifest.json​​tệp của bạn.
@@ -55,15 +55,31 @@ const mix = require('laravel-mix');
 //     process.env.MIX_SOME_KEY
 // ); 
 //-------------------------------------
-
-mix.js('resources/js/app.js', 'public/js')
-   .autoload({
-       jquery: ['$', 'window.jQuery']
-    });
-mix.postCss('resources/css/app.css', 'public/css', [
-    
-]);
 // mix.js('resources/js/app.js', 'public/js')
 //     .postCss('resources/css/app.css', 'public/css', [
 //         //
 //     ]);
+// mix.js('resources/js/app.js', 'public/js')
+//    .autoload({
+//        jquery: ['$', 'window.jQuery']
+//     })
+
+// ------------ START PROJECT 
+// npx mix to combine js and css file to public
+// npx mix watch to combine real time
+
+// --- reload browser when change js
+// mix.js('resources/js/app.js', 'public/js')
+//    .autoload({
+//        jquery: ['$', 'window.jQuery']
+//     }).version().browserSync('http://localhost/carsaleproject/public/');
+
+
+mix.js('resources/js/app.js', 'public/js')
+.autoload({
+    jquery: ['$', 'window.jQuery']
+}).version();
+
+mix.postCss('resources/css/app.css', 'public/css', [
+    
+]);

@@ -1,5 +1,5 @@
 require('./bootstrap');
 
 $(function(){
-    alert('Xin chao');
+    alert('xin chao HNP va cac ban  s');
 });
