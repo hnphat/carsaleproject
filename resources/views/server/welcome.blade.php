@@ -24,7 +24,7 @@
 @endsection
 @section('content')
 <div class="container_fluid">
-  <h1>Xin chao</h1>
+  <h1>Xin chao {{ $pass }}</h1>
 </div>
 @endsection
 @section('local_script')
