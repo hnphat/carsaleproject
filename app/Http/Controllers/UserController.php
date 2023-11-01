@@ -9,8 +9,22 @@ class UserController extends Controller
 {
     //
     public function index() {
-        return response()->json([
-            'data' => User::all(),
-        ]);
+        return view('server.taikhoan.quanlytaikhoan');
+    }
+
+    public function loadData() {
+        $user = User::all();
+        if ($user)
+            return response()->json([
+                'status_code' => 200,
+                'message' => 'Load data success',
+                'data' => $user,
+            ]);
+        else
+            return response()->json([
+                'status_code' => 500,
+                'message' => 'Load data fail',
+                'data' => null,
+            ]); 
     }
 }

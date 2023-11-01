@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //
-    public function login(Request $request)
+    public function loginToGetToken(Request $request)
     {
         try {
             $request->validate([
-                'email' => 'email|required',
+                'name' => 'required',
                 'password' => 'required'
             ]);
 
-            $credentials = request(['email', 'password']);
+            $credentials = request(['name', 'password']);
 
             if (!Auth::attempt($credentials)) {
                 return response()->json([
@@ -27,7 +27,7 @@ class AuthController extends Controller
                 ]);
             }
 
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('name', $request->name)->first();
 
             if (!Hash::check($request->password, $user->password, [])) {
                 throw new \Exception('Error in Login');
@@ -56,7 +56,32 @@ class AuthController extends Controller
             array_push($arr, $token);
         }
         return response()->json([
-            "token" => $arr
+            "token" => $arr,
+            "Hash 123456" => Hash::make(123456)
         ]);
     }
+
+    public function login(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => 'required',
+                'password' => 'required'
+            ]);
+            $credentials = request(['name', 'password']);
+            if (!Auth::attempt($credentials)) {
+                return redirect()->route('login_panel')->with('error','Sai thông tin đăng nhập!');
+            } else {
+                return view('server.mainpanel');
+            }            
+        } catch (\Exception $error) {
+            return redirect()->route('login_panel')->with('error','Vui lòng nhập đầy đủ thông tin!');
+            // return response()->json([
+            //     'status_code' => 500,
+            //     'message' => 'Error in Login',
+            //     'error' => $error,
+            // ]);
+        }
+    }
+
 }

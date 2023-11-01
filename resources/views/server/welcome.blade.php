@@ -3,7 +3,7 @@
     <title>Welcome</title>
 @endsection
 @section('local_css')
-    <title>Welcome</title>
+    
 @endsection
 @section('content_header')
  <!-- <div class="content-header">

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +20,25 @@ use Illuminate\Support\Facades\Hash;
 Route::get('/', function () {
     $pass = Hash::make('admin');
     return view('server.welcome', ['pass' => $pass]);
+});
+
+Route::get('/admin', function() {
+    if (Auth::check())
+        return view('server.mainpanel');
+    return view('login');
+})->name('login_panel');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', function(){
+    Auth::logout();
+    return view('login');
+});
+
+Route::prefix('management')->middleware(['m_login'])->group(function(){
+    Route::view('/mainpanel', 'server.mainpanel');
+    Route::prefix('account')->middleware(['m_login'])->group(function(){
+        Route::name('quanlytaikhoan.')->group(function(){
+            Route::get('/',[UserController::class, 'index'])->name('panel');
+            Route::get('/getdata',[UserController::class, 'loadData']);
+        });        
+    });
 });
