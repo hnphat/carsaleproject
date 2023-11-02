@@ -39,6 +39,10 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
         Route::name('quanlytaikhoan.')->group(function(){
             Route::get('/',[UserController::class, 'index'])->name('panel');
             Route::get('/getdata',[UserController::class, 'loadData']);
+            Route::post('/post',[UserController::class, 'postData'])->name('post');
+            Route::post('/delete',[UserController::class, 'delete'])->name('delete');
+            Route::get('/getedit',[UserController::class, 'getEdit'])->name('getedit');
+            Route::post('/postedit',[UserController::class, 'postEdit'])->name('postedit');
         });        
     });
 });

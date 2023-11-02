@@ -5,7 +5,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a> <a href="./logout" class="text-danger"> (Sign out)</a>
+          <a href="#" class="d-block">{{ Auth::user()->name; }}</a> <a href="./logout" class="text-danger"> (Sign out)</a>
 
         </div>
       </div>
@@ -16,7 +16,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{route('quanlytaikhoan.panel')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-chevron-right"></i>
               <p>
                 Quản lý tài khoản
               </p>

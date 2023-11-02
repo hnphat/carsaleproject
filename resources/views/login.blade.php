@@ -67,6 +67,5 @@
 		</div>
 	</div>
 </div>
-<script src="{{asset('')}}{{mix('js/login.js')}}"></script>
 </body>
 </html>
