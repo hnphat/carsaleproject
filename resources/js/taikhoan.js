@@ -106,7 +106,6 @@ $(document).on('click','#deleteTaiKhoan', function(){
 
 $(document).on('click', '#getEditTaiKhoan', function(){
     $("input[name=idEditTaiKhoan]").val($(this).data('id'));
-    console.log($(this).data('id'));
     let token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         url: url_base + "/getedit",

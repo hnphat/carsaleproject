@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    $pass = Hash::make('admin');
-    return view('server.welcome', ['pass' => $pass]);
-});
+Route::get('/', [IndexController::class, 'getIndex']);
 
 Route::get('/admin', function() {
     if (Auth::check())

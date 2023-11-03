@@ -80,8 +80,14 @@ mix.js('resources/js/app.js', 'public/js')
     jquery: ['$', 'window.jQuery']
 }).version();
 
-mix.postCss('resources/css/app.css', 'public/css', [
-    
+mix.js('resources/js/appclient.js', 'public/js')
+.autoload({
+    jquery: ['$', 'window.jQuery']
+}).version();
+
+mix.postCss('resources/css/app.css', 'public/css', [    
+]);
+mix.postCss('resources/css/appclient.css', 'public/css', [    
 ]);
 mix.postCss('resources/css/login.css', 'public/css', [
     
