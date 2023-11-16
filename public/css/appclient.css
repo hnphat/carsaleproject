@@ -141,6 +141,56 @@ nav ul li {
     padding: 10px;
 }
 
+.infomation span {
+    color: blue;
+    font-size: 14pt;
+}
+
+#copyright {
+    text-align: center;
+    color: white;
+}
+.form-inline input {
+    padding:5px;
+}
+
+#aSidePanel {
+    padding-left: 10px;   
+}
+.sanPhamNoiBat {
+    width: 100%;
+    height: 100%;
+    background-color: azure;
+    box-shadow: 0 0 1px 0 gray;
+    padding: 5px;
+}
+
+.sanPhamNoiBat h5 { 
+    padding: 15px 0 0 5px;
+}
+
+.sanPhamNoiBat img { 
+    max-width: 150px;
+    height: auto;
+    float: left;
+}
+
+.sanPhamNoiBatRow div {
+    float: right;
+    padding: 20px;
+}
+
+.sanPhamNoiBatRow {
+    padding-top: 10px;
+    clear: both;
+    width: 300px;
+}
+
+.hrblue {
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+
 @media only screen and (max-width: 768px) {
     #navformobile {
         display: block;
@@ -154,7 +204,7 @@ nav ul li {
         height: auto;
     }
     nav, .navbar-brand {
-        font-size: 12pt;
+        font-size: 14pt;
     }
     #header {
         display: none;
@@ -189,5 +239,13 @@ nav ul li {
     }
     .boxTitle p {
         line-height: 12pt;
+    }
+    .sanPhamNoiBat {
+        max-width: 1000px;
+    }
+    .sanPhamNoiBatRow {
+        padding-top: 10px;
+        clear: both;
+        max-width: 1000px;
     }
 }

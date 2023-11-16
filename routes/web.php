@@ -20,6 +20,9 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'getIndex']);
 
+Route::get('/tin', [IndexController::class, 'getTin']);
+Route::get('/tinchitiet', [IndexController::class, 'getChiTietTin']);
+
 Route::get('/admin', function() {
     if (Auth::check())
         return view('server.mainpanel');

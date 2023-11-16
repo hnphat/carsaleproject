@@ -90,7 +90,7 @@
       <div class="modal-body">
         <div class="card bg-light">
           <article class="card-body" style="max-width: 1000px;">
-            <form id="addTaiKhoanForm" method="post">
+            <form id="addTaiKhoanForm" method="post" autocomplete="off">
               @csrf
             <i><strong class="text-danger" id="thongBaoTaiKhoan"></strong></i>
               <div class="form-group input-group">
@@ -139,7 +139,7 @@
       <div class="modal-body">
         <div class="card bg-light">
           <article class="card-body" style="max-width: 1000px;">
-            <form id="editTaiKhoanForm" method="post">
+            <form id="editTaiKhoanForm" method="post" autocomplete="off">
               @csrf
             <i><strong class="text-danger" id="thongBaoEditTaiKhoan"></strong></i>
               <input type="hidden" name="idEditTaiKhoan">

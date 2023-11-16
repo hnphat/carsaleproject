@@ -8,6 +8,14 @@ class IndexController extends Controller
 {
     //
     public function getIndex() {
-        return view('layout.client.index');
+        return view('client.trangchu');
+    }
+
+    public function getTin() {
+        return view('client.tintuc');
+    }
+
+    public function getChiTietTin() {
+        return view('client.tintucchitiet');
     }
 }
