@@ -136,3 +136,7 @@
         <p id="copyright" class="hyundai-headFont">Copyright &copy; 2018 - 2023 by Hyundai An Giang</p>
     </div>
 </div>
+<div class="fixedBtn">
+    <img src="{{asset('')}}/images/fixed/calling.gif" alt="FB" width="100px"><br/>
+    &nbsp;<button class="btn btn-primary"> <span class="fa fa-calculator"></span> Báo giá</button> <button class="btn btn-primary"><span class="fa fa-car"></span> Đăng ký lái thử</button>
+</div>

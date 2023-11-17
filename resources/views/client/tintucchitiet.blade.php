@@ -15,7 +15,7 @@
     </nav>
     <div id="tinTucKhac" class="container hyundai-normalfont">        
         <div class="row text-justify">
-            <div class="col-xs" id="tinTucKhacPanel"> 
+            <div class="col-xs clearfix" id="tinTucKhacPanel"> 
                 <h4 class="hyundai-headFont">TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN</h4>
                 <i class="text-secondary">By Admin - 20/10/2023</i>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
@@ -78,11 +78,54 @@
                             </div> 
                         </div>                        
                     </div>
+                </div><br>
+                <div id="tinTucKhac" class="container hyundai-normalfont">
+                    <h4 class="hyundai-headFont">TIN KHUYẾN MÃI</h4>
+                    <div class="text-justify">
+                        <div> 
+                            <div class="row rowBoxShadow">
+                                <div class="box-img">
+                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
+                                </div>
+                                <div class="boxTitle">
+                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
+                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
+                                </div>
+                            </div>     
+                            <div class="row rowBoxShadow">
+                                <div class="box-img">
+                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
+                                </div>
+                                <div class="boxTitle">
+                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
+                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
+                                </div>
+                            </div>       
+                            <div class="row rowBoxShadow">
+                                <div class="box-img">
+                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
+                                </div>
+                                <div class="boxTitle">
+                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
+                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
+                                </div>
+                            </div> 
+                            <div class="row rowBoxShadow">
+                                <div class="box-img">
+                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
+                                </div>
+                                <div class="boxTitle">
+                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
+                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
+                                </div>
+                            </div> 
+                        </div>                        
+                    </div>
                 </div>
             </div>
             <div class="col-xs" id="aSidePanel">
                 <div class="sanPhamNoiBat">
-                    <h5><strong>Sản phẩm nổi bật</strong></h5>
+                    <h4><strong>Sản phẩm nổi bật</strong></h4>
                     <hr class="hrblue">
                     <div class="sanPhamNoiBatRow">
                         <img src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">

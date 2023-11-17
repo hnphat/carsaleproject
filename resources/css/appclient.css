@@ -1,7 +1,11 @@
 * {
     box-sizing: border-box;
 }
-
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 /* For header */
 #header {
     background-color: #f8f8f8;
@@ -38,6 +42,10 @@
     padding: 5px;
     box-shadow: 0 0 4px lightblue;
 } 
+
+.shadow_box h5 {
+    padding-top: 10px;
+}
 /* ---------------------- */
 /* For menu */
 #navformobile {
@@ -55,6 +63,22 @@ nav ul li {
     padding: 0 10px;
 }
 
+.carimage {
+    width: 100%;
+}
+
+.carcolor {
+    width: 100px;
+}
+.navbarcolor {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbarcolor  li {
+    display: inline;
+}
 @media only screen and (min-width: 768px) {
     .dropdown:hover .dropdown-menu {
         display: block;
@@ -190,6 +214,27 @@ nav ul li {
     border: 1px solid blue;
     border-radius: 5px;
 }
+#navcarbox {
+    width: 1000px;
+}
+.boxcar {
+    float: left;
+}
+.boxcar img {
+    max-width: 200px;
+    text-align: center;
+}
+
+.boxcar a {
+    text-decoration: none;
+    color: black;
+}
+
+.fixedBtn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
 
 @media only screen and (max-width: 768px) {
     #navformobile {
@@ -239,13 +284,12 @@ nav ul li {
     }
     .boxTitle p {
         line-height: 12pt;
-    }
+    }  
     .sanPhamNoiBat {
-        max-width: 1000px;
+        background-color: white;
+        box-shadow: 0 0 0 0 white;
     }
-    .sanPhamNoiBatRow {
-        padding-top: 10px;
-        clear: both;
-        max-width: 1000px;
+    #navcarbox {
+        width: 100%;
     }
 }

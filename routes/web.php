@@ -22,6 +22,7 @@ Route::get('/', [IndexController::class, 'getIndex']);
 
 Route::get('/tin', [IndexController::class, 'getTin']);
 Route::get('/tinchitiet', [IndexController::class, 'getChiTietTin']);
+Route::get('/xe', [IndexController::class, 'getXe']);
 
 Route::get('/admin', function() {
     if (Auth::check())

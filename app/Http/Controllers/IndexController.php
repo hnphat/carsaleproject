@@ -18,4 +18,8 @@ class IndexController extends Controller
     public function getChiTietTin() {
         return view('client.tintucchitiet');
     }
+
+    public function getXe() {
+        return view('client.chitietxe');
+    }
 }
