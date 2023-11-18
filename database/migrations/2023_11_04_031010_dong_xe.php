@@ -16,6 +16,7 @@ class DongXe extends Migration
         Schema::create('dong_xe', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->boolean('isShow')->default(true);
             $table->timestamps();
         });
     }

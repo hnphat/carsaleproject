@@ -23,4 +23,5 @@ require('datatables.net-responsive-bs4');
 const Swal = require('sweetalert2');
 $(function(){
     require('./taikhoan');
+    require('./dongxe');
 });

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\DongXeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::get('/logout', function(){
 
 Route::prefix('management')->middleware(['m_login'])->group(function(){
     Route::view('/mainpanel', 'server.mainpanel');
-    Route::prefix('account')->middleware(['m_login'])->group(function(){
+    Route::prefix('account')->group(function(){
         Route::name('quanlytaikhoan.')->group(function(){
             Route::get('/',[UserController::class, 'index'])->name('panel');
             Route::get('/getdata',[UserController::class, 'loadData']);
@@ -45,6 +46,16 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::post('/delete',[UserController::class, 'delete'])->name('delete');
             Route::get('/getedit',[UserController::class, 'getEdit'])->name('getedit');
             Route::post('/postedit',[UserController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('dongxe')->group(function(){
+        Route::name('quanlydongxe.')->group(function(){
+            Route::get('/',[DongXeController::class, 'index'])->name('panel');
+            Route::get('/getdata',[DongXeController::class, 'loadData']);
+            Route::post('/post',[DongXeController::class, 'postData'])->name('post');
+            Route::post('/delete',[DongXeController::class, 'delete'])->name('delete');
+            Route::get('/getedit',[DongXeController::class, 'getEdit'])->name('getedit');
+            Route::post('/postedit',[DongXeController::class, 'postEdit'])->name('postedit');
         });        
     });
 });

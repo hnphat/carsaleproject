@@ -32,7 +32,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('quanlydongxe.panel')}}" class="nav-link">
                   <i class="fa fa-caret-right nav-icon"></i>
                   <p>Danh sách xe</p>
                 </a>
