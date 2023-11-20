@@ -24,4 +24,5 @@ const Swal = require('sweetalert2');
 $(function(){
     require('./taikhoan');
     require('./dongxe');
+    require('./tinxe');
 });
