@@ -1,6 +1,6 @@
 @extends('layout.server.index')
 @section('title')
-    <title>Thêm mới tin xe</title>
+    <title>Cập nhật tin xe</title>
 @endsection
 @section('local_css')
 <style>
@@ -64,13 +64,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">THÊM MỚI TIN XE</h1>
+            <h1 class="m-0">CẬP NHẬT TIN XE</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
               <li class="breadcrumb-item"><a href="#">Quản lý xe</a></li>
-              <li class="breadcrumb-item active">Tin xe -> Thêm mới</li>
+              <li class="breadcrumb-item active">Tin xe -> Cập nhật</li>
             </ol>
           </div>
         </div>
@@ -79,25 +79,25 @@
 @endsection
 @section('content')
 <div class="container_fluid">
-<form id="addTinXeForm" method="post" autocomplete="off" enctype="multipart/form-data">
+<form id="editTinXeForm" method="post" autocomplete="off" enctype="multipart/form-data">
   @csrf
   <label for="">Tiêu đề</label><br/>  
   <div class="form-group input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="tieuDe" type="text" class="form-control" placeholder="Tiêu đề tin" required="required" autofocus="autofocus">
+    <input name="etieuDe" type="text" class="form-control" placeholder="Tiêu đề tin" required="required" autofocus="autofocus">
   </div> <!-- form-group// -->    
   <label for="">Hình Ảnh</label><br/>
   <div class="form-group input-group">    
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="hinhAnh" type="file" class="form-control" required="required">
+    <input name="ehinhAnh" type="file" class="form-control" required="required">
   </div> <!-- form-group// -->   
-  <label for="">Mô tả bài viết (tối đa 255 ký tự)</label><br/>  
+  <label for="">Mô tả bài viết</label><br/>  
   <div class="form-group input-group">
-    <textarea name="moTa" id="moTa" cols="30" rows="3" class="form-control" maxlength="254"></textarea>
+    <textarea name="emoTa" id="moTa" cols="30" rows="5" class="form-control"></textarea>
     <!-- <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
@@ -105,25 +105,25 @@
   </div> <!-- form-group// -->      
   <label for="">Nội dung</label><br/>  
   <div class="form-group">
-    <textarea name="noiDung" id="noiDung" class="ckeditor"></textarea>
+    <textarea name="enoiDung" id="enoiDung" class="ckeditor"></textarea>
   </div> <!-- form-group// -->    
   <div class="form-group input-group">
-    <input name="isAds" id="isAds" type="checkbox" style="width: 25px;"> &nbsp;
-    <label for="isAds">Quảng cáo xoay vòng</label>
+    <input name="eisAds" id="eisAds" type="checkbox" style="width: 25px;"> &nbsp;
+    <label for="eisAds">Quảng cáo xoay vòng</label>
   </div> <!-- form-group// -->    
   <div class="form-group input-group">
-    <input name="thuThap" id="thuThap" type="checkbox" style="width: 25px;"> &nbsp;
-    <label for="thuThap">Thu thập dữ liệu</label>
+    <input name="ethuThap" id="thuThap" type="checkbox" style="width: 25px;"> &nbsp;
+    <label for="ethuThap">Thu thập dữ liệu</label>
   </div> <!-- form-group// -->    
   <label for="">Thông số kỹ thuật (*.pdf)</label><br/>
   <div class="form-group input-group">    
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="thongSoKyThuat" type="file" class="form-control" required="required">
+    <input name="ethongSoKyThuat" type="file" class="form-control" required="required">
   </div> <!-- form-group// -->   
   <div class="form-group">
-      <button type="submit" id="taoTinXe" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Thêm&nbsp;&nbsp;&nbsp;</button>
+      <button type="submit" id="capNhatTinXe" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Thêm&nbsp;&nbsp;&nbsp;</button>
   </div> <!-- form-group// -->                                                            
 </form>
 </div>

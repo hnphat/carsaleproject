@@ -87,11 +87,11 @@
       <tr class="bg-gradient-lightblue">
           <th>TT</th>
           <th>Tiêu đề</th>
-          <th>Slug</th>
+          <!-- <th>Slug</th> -->
           <th>Ảnh</th>
           <th>Mô tả</th>
           <th>Thu thập dữ liệu</th>
-          <th>Hiển thị xoay vòng</th>
+          <th>Quảng cáo xoay vòng</th>
           <th>Thông số kỹ thuật</th>
           <th>Tác vụ</th>                                        
       </tr>

@@ -2513,10 +2513,17 @@ var tinXeTable = $('#tinXeTable').DataTable({
     "data": null
   }, {
     "data": "name"
-  }, {
-    "data": "slugName"
-  }, {
-    "data": "hinhAnh"
+  },
+  // { "data": "slugName" },
+  {
+    "data": null,
+    render: function render(data, type, row) {
+      if (row.hinhAnh) {
+        return "<img class='picmini' src='./upload/tinxe/".concat(row.hinhAnh, "' alt='name'/>");
+      } else {
+        return "";
+      }
+    }
   }, {
     "data": "moTa"
   }, {
@@ -2538,7 +2545,14 @@ var tinXeTable = $('#tinXeTable').DataTable({
       }
     }
   }, {
-    "data": "thongSoKyThuat"
+    "data": null,
+    render: function render(data, type, row) {
+      if (row.thongSoKyThuat) {
+        return "<strong><a href='./upload/tinxe/thongsokythuat/".concat(row.thongSoKyThuat, "' target='_blank'>Xem</a></strong>");
+      } else {
+        return "";
+      }
+    }
   }, {
     "data": null,
     render: function render(data, type, row) {
@@ -2555,6 +2569,44 @@ tinXeTable.on('order.dt search.dt', function () {
     tinXeTable.cell(cell).invalidate('dom');
   });
 }).draw();
+$("#taoTinXe").click(function () {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $("#addTinXeForm").one("submit", submitFormFunction);
+  function submitFormFunction(e) {
+    var _this = this;
+    e.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+      type: 'POST',
+      url: url_base + "/post",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      beforeSend: function beforeSend() {
+        $("#taoTinXe").attr('disabled', true).html("Đang thêm mới...");
+      },
+      success: function success(response) {
+        console.log(response);
+        if (response.code == 200) {
+          _this.reset();
+          Swal.fire("Thông báo", response.message, response.type);
+        } else {
+          Swal.fire("Thông báo", response.message, response.type);
+        }
+        $("#taoTinXe").attr('disabled', false).html("Thêm");
+      },
+      error: function error(response) {
+        console.log(response);
+        $("#taoTinXe").attr('disabled', false).html("Thêm");
+      }
+    });
+  }
+});
 $(document).on('click', '#deleteTinXe', function () {
   var id = $(this).data('id');
   var token = $('meta[name="csrf-token"]').attr('content');
@@ -2568,8 +2620,12 @@ $(document).on('click', '#deleteTinXe', function () {
         "id": id
       },
       success: function success(response) {
-        Swal.fire("Thông báo", response.message, response.type);
-        dongXeTable.ajax.reload();
+        if (response.code == 200) {
+          Swal.fire("Thông báo", response.message, response.type);
+          tinXeTable.ajax.reload();
+        } else {
+          Swal.fire("Thông báo", response.message, response.type);
+        }
       },
       error: function error(response) {
         Swal.fire("Thông báo", response.responseJSON.message, "error");
