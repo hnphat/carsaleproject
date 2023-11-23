@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DongXeController;
 use App\Http\Controllers\TinXeController;
+use App\Http\Controllers\XeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,17 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::post('/delete',[TinXeController::class, 'delete'])->name('delete');
             Route::get('/getedit/{idtinxe}',[TinXeController::class, 'getEdit'])->name('getedit');
             Route::post('/getedit/{idtinxe}/postedit',[TinXeController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('xe')->group(function(){
+        Route::name('xe.')->group(function(){
+            Route::get('/',[XeController::class, 'index'])->name('panel');
+            Route::get('/getdata',[XeController::class, 'loadData']);
+            Route::get('/themmoi',[XeController::class, 'themMoi'])->name('post.themmoi');
+            // Route::post('/themmoi/post',[XeController::class, 'postData'])->name('post');
+            // Route::post('/delete',[XeController::class, 'delete'])->name('delete');
+            // Route::get('/getedit/{idtinxe}',[XeController::class, 'getEdit'])->name('getedit');
+            // Route::post('/getedit/{idtinxe}/postedit',[XeController::class, 'postEdit'])->name('postedit');
         });        
     });
 });

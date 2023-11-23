@@ -68,8 +68,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
-              <li class="breadcrumb-item"><a href="#">Quản lý xe</a></li>
+              <li class="breadcrumb-item"><a href="./admin">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý xe</li>
               <li class="breadcrumb-item active">Tin xe -> Cập nhật</li>
             </ol>
           </div>

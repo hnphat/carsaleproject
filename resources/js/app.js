@@ -25,4 +25,5 @@ $(function(){
     require('./taikhoan');
     require('./dongxe');
     require('./tinxe');
+    require('./xe');
 });

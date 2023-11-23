@@ -34,7 +34,7 @@
               <li class="nav-item">
                 <a href="{{route('quanlydongxe.panel')}}" class="nav-link">
                   <i class="fa fa-caret-right nav-icon"></i>
-                  <p>Danh sách xe</p>
+                  <p>Dòng xe</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -44,9 +44,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('xe.panel')}}" class="nav-link">
                   <i class="fa fa-caret-right nav-icon"></i>
-                  <p>Màu xe</p>
+                  <p>Xe</p>
                 </a>
               </li>
             </ul>

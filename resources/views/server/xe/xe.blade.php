@@ -1,6 +1,6 @@
 @extends('layout.server.index')
 @section('title')
-    <title>Quản lý tài khoản</title>
+    <title>Quản lý xe</title>
 @endsection
 @section('local_css')
 <style>
@@ -64,12 +64,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">QUẢN LÝ XE</h1>
+            <h1 class="m-0">XE</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./admin">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý xe -> danh sách</li>
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item"><a href="#">Quản lý xe</a></li>
+              <li class="breadcrumb-item active">Xe</li>
             </ol>
           </div>
         </div>
@@ -78,20 +79,31 @@
 @endsection
 @section('content')
 <div class="container_fluid">
-    <div class="container_fluid">
-    <table id="xeTable" class="display" style="width:100%">
-        <thead>
-        <tr class="bg-gradient-lightblue">
-            <th>TT</th>
-            <th>Tên xe</th>
-            <th>Email</th>
-            <th>Ngày tạo</th>
-            <th>Ngày cập nhật</th>
-            <th>Tác vụ</th>                                        
-        </tr>
-        </thead>
-    </table>
-    </div>
+<a href="{{route('xe.post.themmoi')}}" target="_blank" class="btn btn-success">Thêm mới</a><br/><br/>
+<!-- Modal Edit End -->
+<div class="container_fluid">
+  <table id="xeTable" class="display" style="width:100%">
+      <thead>
+      <tr class="bg-gradient-lightblue">
+          <th>TT</th>
+          <th>Tên xe</th>
+          <th>Hình ảnh</th>
+          <th>Dòng xe</th>
+          <th>Loại xe</th>
+          <th>Hộp số</th>
+          <th>Nhiên liệu</th>
+          <th>Chỗ ngồi</th>
+          <th>Giá bán</th>
+          <th>Bài viết</th>
+          <th>Xe mới</th>
+          <th>Khuyến mãi</th>
+          <th>Hiển thị</th>
+          <th>Vị trí</th>
+          <th>Tác vụ</th>                                        
+      </tr>
+      </thead>
+  </table>
+</div>
 </div>
 @endsection
 @section('local_script')
