@@ -2633,6 +2633,47 @@ $(document).on('click', '#deleteTinXe', function () {
     });
   }
 });
+$(document).on('click', '#getEditTinXe', function () {
+  var idtinxe = $(this).data('id');
+  open(url_base + "/getedit/" + idtinxe, '_blank');
+});
+$("#capNhatTinXe").click(function () {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $("#editTinXeForm").one("submit", submitFormFunction);
+  function submitFormFunction(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+      type: 'POST',
+      url: url_base + "/postedit",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      beforeSend: function beforeSend() {
+        $("#capNhatTinXe").attr('disabled', true).html("Đang cập nhật...");
+      },
+      success: function success(response) {
+        console.log(response);
+        Swal.fire("Thông báo", response.message, response.type);
+        $("#capNhatTinXe").attr('disabled', false).html("Cập nhật");
+        if (response.code == 200) {
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
+        }
+      },
+      error: function error(response) {
+        console.log(response);
+        $("#capNhatTinXe").attr('disabled', false).html("Cập nhật");
+      }
+    });
+  }
+});
 
 /***/ }),
 

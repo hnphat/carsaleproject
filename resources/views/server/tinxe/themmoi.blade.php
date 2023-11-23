@@ -98,10 +98,6 @@
   <label for="">Mô tả bài viết (tối đa 255 ký tự)</label><br/>  
   <div class="form-group input-group">
     <textarea name="moTa" id="moTa" cols="30" rows="3" class="form-control" maxlength="254"></textarea>
-    <!-- <div class="input-group-prepend">
-        <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
-    </div>
-    <input name="moTa" type="text" class="form-control" placeholder="Mô tả bài viết (tối đa 254 ký tự)" maxlength="255" required="required"> -->
   </div> <!-- form-group// -->      
   <label for="">Nội dung</label><br/>  
   <div class="form-group">

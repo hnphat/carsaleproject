@@ -86,44 +86,51 @@
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="etieuDe" type="text" class="form-control" placeholder="Tiêu đề tin" required="required" autofocus="autofocus">
+    <input name="etieuDe" value="{{$data->name}}" type="text" class="form-control" placeholder="Tiêu đề tin" required="required" autofocus="autofocus">
   </div> <!-- form-group// -->    
   <label for="">Hình Ảnh</label><br/>
+  <img class='picminiedit' id="imgEdit" src="./upload/tinxe/{{$data->hinhAnh}}" alt="Hình ảnh">
   <div class="form-group input-group">    
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="ehinhAnh" type="file" class="form-control" required="required">
+    <input name="ehinhAnh" type="file" class="form-control">
   </div> <!-- form-group// -->   
   <label for="">Mô tả bài viết</label><br/>  
   <div class="form-group input-group">
-    <textarea name="emoTa" id="moTa" cols="30" rows="5" class="form-control"></textarea>
-    <!-- <div class="input-group-prepend">
-        <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
-    </div>
-    <input name="moTa" type="text" class="form-control" placeholder="Mô tả bài viết (tối đa 254 ký tự)" maxlength="255" required="required"> -->
+    <textarea name="emoTa" id="moTa" cols="30" rows="5" class="form-control" maxlength="254">{{$data->moTa}}</textarea>
   </div> <!-- form-group// -->      
   <label for="">Nội dung</label><br/>  
   <div class="form-group">
-    <textarea name="enoiDung" id="enoiDung" class="ckeditor"></textarea>
+    <textarea name="enoiDung" id="enoiDung" class="ckeditor">
+    {{$data->content}}
+    </textarea>
   </div> <!-- form-group// -->    
   <div class="form-group input-group">
-    <input name="eisAds" id="eisAds" type="checkbox" style="width: 25px;"> &nbsp;
+    <input name="eisAds" id="eisAds" type="checkbox" style="width: 25px;"
+    @if($data->quangCaoRamdom)
+      checked="checked"
+    @endif
+    > &nbsp;
     <label for="eisAds">Quảng cáo xoay vòng</label>
   </div> <!-- form-group// -->    
   <div class="form-group input-group">
-    <input name="ethuThap" id="thuThap" type="checkbox" style="width: 25px;"> &nbsp;
+    <input name="ethuThap" id="ethuThap" type="checkbox" style="width: 25px;"
+    @if($data->thuThap)
+      checked="checked"
+    @endif
+    > &nbsp;
     <label for="ethuThap">Thu thập dữ liệu</label>
   </div> <!-- form-group// -->    
-  <label for="">Thông số kỹ thuật (*.pdf)</label><br/>
+  <label for="">Thông số kỹ thuật (*.pdf)</label> <strong><a class='btn btn-primary btn-sm' id="aEdit" href='./upload/tinxe/thongsokythuat/{{$data->thongSoKyThuat}}' target='_blank'>Xem</a></strong><br/>
   <div class="form-group input-group">    
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="ethongSoKyThuat" type="file" class="form-control" required="required">
+    <input name="ethongSoKyThuat" type="file" class="form-control">
   </div> <!-- form-group// -->   
   <div class="form-group">
-      <button type="submit" id="capNhatTinXe" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Thêm&nbsp;&nbsp;&nbsp;</button>
+      <button type="submit" id="capNhatTinXe" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Cập nhật&nbsp;&nbsp;&nbsp;</button>
   </div> <!-- form-group// -->                                                            
 </form>
 </div>

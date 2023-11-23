@@ -66,8 +66,8 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::get('/themmoi',[TinXeController::class, 'themMoi'])->name('post.themmoi');
             Route::post('/themmoi/post',[TinXeController::class, 'postData'])->name('post');
             Route::post('/delete',[TinXeController::class, 'delete'])->name('delete');
-            // Route::get('/getedit',[TinXeController::class, 'getEdit'])->name('getedit');
-            // Route::post('/postedit',[TinXeController::class, 'postEdit'])->name('postedit');
+            Route::get('/getedit/{idtinxe}',[TinXeController::class, 'getEdit'])->name('getedit');
+            Route::post('/getedit/{idtinxe}/postedit',[TinXeController::class, 'postEdit'])->name('postedit');
         });        
     });
 });
