@@ -9,6 +9,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DongXeController;
 use App\Http\Controllers\TinXeController;
 use App\Http\Controllers\XeController;
+use App\Http\Controllers\MauXeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
         Route::name('tinxe.')->group(function(){
             Route::get('/',[TinXeController::class, 'index'])->name('panel');
             Route::get('/getdata',[TinXeController::class, 'loadData']);
+            Route::get('/gettinxe',[TinXeController::class, 'getTinXe']);
             Route::get('/themmoi',[TinXeController::class, 'themMoi'])->name('post.themmoi');
             Route::post('/themmoi/post',[TinXeController::class, 'postData'])->name('post');
             Route::post('/delete',[TinXeController::class, 'delete'])->name('delete');
@@ -75,11 +77,24 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
         Route::name('xe.')->group(function(){
             Route::get('/',[XeController::class, 'index'])->name('panel');
             Route::get('/getdata',[XeController::class, 'loadData']);
+            Route::get('/gettinxe',[XeController::class, 'getTinXe']);
             Route::get('/themmoi',[XeController::class, 'themMoi'])->name('post.themmoi');
-            // Route::post('/themmoi/post',[XeController::class, 'postData'])->name('post');
-            // Route::post('/delete',[XeController::class, 'delete'])->name('delete');
-            // Route::get('/getedit/{idtinxe}',[XeController::class, 'getEdit'])->name('getedit');
-            // Route::post('/getedit/{idtinxe}/postedit',[XeController::class, 'postEdit'])->name('postedit');
+            Route::post('/themmoi/post',[XeController::class, 'postData'])->name('post');
+            Route::post('/delete',[XeController::class, 'delete'])->name('delete');
+            Route::get('/getedit/{idxe}',[XeController::class, 'getEdit'])->name('getedit');
+            Route::post('/getedit/{idxe}/postedit',[XeController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('mauxe')->group(function(){
+        Route::name('mauxe.')->group(function(){
+            Route::get('/',[MauXeController::class, 'index'])->name('panel');
+            // Route::get('/getdata',[MauXeController::class, 'loadData']);
+            // Route::get('/gettinxe',[MauXeController::class, 'getTinXe']);
+            // Route::get('/themmoi',[MauXeController::class, 'themMoi'])->name('post.themmoi');
+            // Route::post('/themmoi/post',[MauXeController::class, 'postData'])->name('post');
+            // Route::post('/delete',[MauXeController::class, 'delete'])->name('delete');
+            // Route::get('/getedit/{idxe}',[MauXeController::class, 'getEdit'])->name('getedit');
+            // Route::post('/getedit/{idxe}/postedit',[MauXeController::class, 'postEdit'])->name('postedit');
         });        
     });
 });

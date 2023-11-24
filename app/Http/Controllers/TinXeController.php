@@ -276,4 +276,25 @@ class TinXeController extends Controller
             ]); 
         }
     }
+
+    public function getTinXe(Request $request) {
+        $data = TinXe::find($request->id);
+        if ($data) {
+            return response()->json([
+                'code' => 200,
+                'type' => "info",
+                'message' => 'Load successfull!',
+                'tieuDe' => $data->name,
+                'moTa' => $data->moTa,
+                'noiDung' => $data->content              
+            ]); 
+        } else {
+            return response()->json([
+                'code' => 500,
+                'type' => "error",
+                'message' => 'Load Fail!',
+                'data' => null              
+            ]); 
+        }
+    }
 }

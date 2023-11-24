@@ -18,7 +18,12 @@ let tinXeTable = $('#tinXeTable').DataTable({
     lengthMenu:  [5, 10, 25, 50, 75, 100 ],
     columns: [
         { "data": null },
-        { "data": "name" },
+        {   
+            "data": null,
+            render: function(data, type, row) {                           
+                return `<a id="openTinXe" href="#" data-idtinxe="${row.id}" data-toggle="modal" data-target="#tinXeShowModal">${row.name}</a>`;
+            } 
+        },
         // { "data": "slugName" },
         {   
             "data": null,
@@ -184,4 +189,31 @@ $("#capNhatTinXe").click(function(){
             }
         });
     }
+});
+
+$(document).on('click','#openTinXe', function(){
+    let idTinXe = $(this).data('idtinxe');
+    console.log(idTinXe);
+    $.ajax({
+        type:'get',
+        url: url_base + "/gettinxe",
+        data: {
+            "id": idTinXe
+        },
+        success: (response) => {
+            console.log(response);  
+            if(response.code == 200) {
+                $("#tieuDeShow").text(response.tieuDe);        
+                $("#moTaShow").text(response.moTa);        
+                $("#noiDungShow").html(response.noiDung);  
+            } else {
+                $("#tieuDeShow").text("");        
+                $("#moTaShow").text("");        
+                $("#noiDungShow").html("");  
+            }
+        },
+        error: function(response){
+            console.log(response);
+        }
+    });
 });

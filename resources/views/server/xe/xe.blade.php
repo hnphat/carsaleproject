@@ -89,7 +89,7 @@
           <th>Tên xe</th>
           <th>Hình ảnh</th>
           <th>Dòng xe</th>
-          <th>Loại xe</th>
+          <th>Kiểu dáng</th>
           <th>Hộp số</th>
           <th>Nhiên liệu</th>
           <th>Chỗ ngồi</th>
@@ -98,13 +98,32 @@
           <th>Xe mới</th>
           <th>Khuyến mãi</th>
           <th>Hiển thị</th>
-          <th>Vị trí</th>
           <th>Tác vụ</th>                                        
       </tr>
       </thead>
   </table>
 </div>
 </div>
+<!-- Modal Add -->
+<div class="modal fade" id="tinXeShowModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div style="max-width: 1200px;">
+            <h2 id="tieuDeShow"></h2>
+            <p id="moTaShow"></p>
+            <div id="noiDungShow">
+
+            </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Add End-->
 @endsection
 @section('local_script')
 @endsection

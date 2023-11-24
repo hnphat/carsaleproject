@@ -94,7 +94,9 @@
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
     <select name="dongXe" id="dongXe" class="form-control">
-        <option value="">Hyundai Santafe</option>
+        @foreach($dongXe as $row)
+          <option value="{{$row->id}}">{{$row->name}}</option>
+        @endforeach
     </select>
   </div> <!-- form-group// -->    
   <label for="">Hình Ảnh</label><br/>
@@ -110,14 +112,14 @@
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
     <select name="loaiXe" id="loaiXe" class="form-control">
-        <option value="">SUV - Sport Utility Vehicle</option>
-        <option value="">MPV - Multi Purpose Vehecle</option>
-        <option value="">Sedan</option>
-        <option value="">Hatchback</option>
-        <option value="">Crossover</option>
-        <option value="">Coupe</option>
-        <option value="">Bán tải</option>
-        <option value="">Xe tải</option>
+        <option value="SUV">SUV - Sport Utility Vehicle</option>
+        <option value="MPV">MPV - Multi Purpose Vehecle</option>
+        <option value="Sedan">Sedan</option>
+        <option value="Hatchback">Hatchback</option>
+        <option value="Crossover">Crossover</option>
+        <option value="Coupe">Coupe</option>
+        <option value="Bán tải">Bán tải</option>
+        <option value="Xe tải">Xe tải</option>
     </select>
   </div> <!-- form-group// -->   
   <label for="">Hộp số</label><br/>   
@@ -126,9 +128,9 @@
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
     <select name="hopSo" id="hopSo" class="form-control">
-        <option value="">AT - Số tự động</option>
-        <option value="">MT - Số sàn</option>
-        <option value="">AT/MT</option>
+        <option value="AT">AT - Số tự động</option>
+        <option value="MT">MT - Số sàn</option>
+        <option value="AT/MT">AT/MT</option>
     </select>
   </div> <!-- form-group// -->   
   <label for="">Nhiên liệu</label><br/>   
@@ -137,12 +139,12 @@
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
     <select name="nhienLieu" id="nhienLieu" class="form-control">
-        <option value="">Xăng</option>
-        <option value="">Xăng/Dầu</option>
-        <option value="">Dầu</option>
-        <option value="">Điện</option>
-        <option value="">Điện/Dầu</option>
-        <option value="">Điện/Xăng</option>
+        <option value="Xăng">Xăng</option>
+        <option value="Xăng/Dầu">Xăng/Dầu</option>
+        <option value="Dầu">Dầu</option>
+        <option value="Điện">Điện</option>
+        <option value="Điện/Dầu">Điện/Dầu</option>
+        <option value="Điện/Xăng">Điện/Xăng</option>
     </select>
   </div> <!-- form-group// --> 
   <label for="">Chỗ ngồi</label><br/>   
@@ -151,20 +153,21 @@
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
     <select name="choNgoi" id="choNgoi" class="form-control">
-        <option value="">4</option>
-        <option value="">5</option>
-        <option value="">6</option>
-        <option value="">6/7</option>
-        <option value="">7</option>
-        <option value="">9</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="6/7">6/7</option>
+        <option value="7">7</option>
+        <option value="9">9</option>
     </select>
   </div> <!-- form-group// -->     
   <label for="">Giá xe</label><br/>  
+  <p id="showGiaXe"></p>
   <div class="form-group input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
-    <input name="giaBan" type="number" class="form-control" placeholder="Giá bán" required="required">
+    <input name="giaBan" id="giaBan" value="0" type="number" class="form-control" placeholder="Giá bán" required="required">
   </div> <!-- form-group// --> 
   <div class="form-group input-group">
     <input name="isNew" id="isNew" type="checkbox" style="width: 25px;"> &nbsp;
@@ -177,27 +180,20 @@
   <div class="form-group input-group">
     <input name="isShow" id="isShow" type="checkbox" style="width: 25px;"> &nbsp;
     <label for="isShow">Hiển thị</label>
-  </div> <!-- form-group// -->  
-  <label for="">Vị trí</label><br/>   
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
-    </div>
-    <select name="position" id="position" class="form-control">
-        <option value="">1</option>
-    </select>
-  </div> <!-- form-group// -->     
+  </div> <!-- form-group// -->      
   <label for="">Tin xe</label><br/>   
   <div class="form-group input-group">
     <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
     </div>
     <select name="tinXe" id="tinXe" class="form-control">
-        <option value="">Hyundai Santafe</option>
+        @foreach($tinXe as $row)
+          <option value="{{$row->id}}">{{$row->name}}</option>
+        @endforeach
     </select>
   </div> <!-- form-group// -->     
   <div class="form-group">
-      <button type="submit" id="taoTinXe" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Thêm&nbsp;&nbsp;&nbsp;</button>
+      <button type="submit" id="taoXe" class="btn btn-primary">&nbsp;&nbsp;&nbsp;Thêm&nbsp;&nbsp;&nbsp;</button>
   </div> <!-- form-group// -->                                                            
 </form>
 </div>

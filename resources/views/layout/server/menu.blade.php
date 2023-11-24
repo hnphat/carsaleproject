@@ -49,6 +49,12 @@
                   <p>Xe</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('mauxe.panel')}}" class="nav-link">
+                  <i class="fa fa-caret-right nav-icon"></i>
+                  <p>Màu xe</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
