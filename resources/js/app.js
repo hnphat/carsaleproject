@@ -27,4 +27,5 @@ $(function(){
     require('./tinxe');
     require('./xe');
     require('./tintuc');
+    require('./slide');
 });

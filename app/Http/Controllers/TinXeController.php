@@ -16,13 +16,13 @@ class TinXeController extends Controller
         $data = TinXe::select("*")->orderBy('id', 'desc')->get();
         if ($data)
             return response()->json([
-                'status_code' => 200,
+                'code' => 200,
                 'message' => 'Load data success',
                 'data' => $data,
             ]);
         else
             return response()->json([
-                'status_code' => 500,
+                'code' => 500,
                 'message' => 'Load data fail',
                 'data' => null,
             ]); 

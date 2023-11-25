@@ -11,6 +11,7 @@ use App\Http\Controllers\TinXeController;
 use App\Http\Controllers\XeController;
 use App\Http\Controllers\MauXeController;
 use App\Http\Controllers\TinTucController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,17 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::post('/delete',[TinTucController::class, 'delete'])->name('delete');
             Route::get('/getedit/{idtintuc}',[TinTucController::class, 'getEdit'])->name('getedit');
             Route::post('/getedit/{idtintuc}/postedit',[TinTucController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('slider')->group(function(){
+        Route::name('slider.')->group(function(){
+            Route::get('/',[SliderController::class, 'index'])->name('panel');
+            Route::get('/getdata',[SliderController::class, 'loadData']);
+            Route::get('/gettin',[SliderController::class, 'getTin']);
+            Route::post('/post',[SliderController::class, 'postData'])->name('post');
+            Route::post('/delete',[SliderController::class, 'delete'])->name('delete');
+            Route::get('/getedit',[SliderController::class, 'getEdit'])->name('getedit');
+            Route::post('/postedit',[SliderController::class, 'postEdit'])->name('postedit');
         });        
     });
 });

@@ -2,6 +2,10 @@
     max-width: 150px;
 }
 
+.picslide {
+    max-width: 600px;
+}
+
 .picminiedit {
     max-width: 300px;
 }
@@ -12,4 +16,8 @@
 
 #sHinhAnh {
     max-width: 500px;
+}
+
+#slideShowImage {
+    max-width: 300px; 
 }

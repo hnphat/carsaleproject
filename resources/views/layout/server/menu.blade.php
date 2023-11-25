@@ -15,6 +15,14 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+                Cấu hình tổng thể
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('quanlytaikhoan.panel')}}" class="nav-link">
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
@@ -60,6 +68,59 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('slider.panel')}}" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+                Quản lý slider
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+               Thu thập dữ liệu
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-caret-right nav-icon"></i>
+                  <p>Tạo bộ thu thập</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-caret-right nav-icon"></i>
+                  <p>Dữ liệu thu thập</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-caret-right nav-icon"></i>
+                  <p>Dữ liệu cũ</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+                Tuyển dụng
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+                Footer
+              </p>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -91,7 +152,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
