@@ -98,12 +98,14 @@
           <th>Xe mới</th>
           <th>Khuyến mãi</th>
           <th>Hiển thị</th>
+          <th>Màu xe</th>
           <th>Tác vụ</th>                                        
       </tr>
       </thead>
   </table>
 </div>
 </div>
+
 <!-- Modal Add -->
 <div class="modal fade" id="tinXeShowModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
@@ -124,6 +126,69 @@
   </div>
 </div>
 <!-- Modal Add End-->
+
+<!-- Modal Add Màu Xe -->
+<div class="modal fade" id="mauXeShowModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>MÀU XE</h3>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div style="max-width: 1200px;">
+          <form id="addMauXeForm" method="post" autocomplete="off">
+              @csrf
+              <input type="hidden" name="idXe">
+              <label for="">Tên màu</label><br/>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
+                </div>
+                <input name="tenMau" class="form-control" placeholder="Tên màu" required="required" autofocus="autofocus">
+              </div> <!-- form-group// -->  
+              <label for="">Mã màu <input name="maMau" id="maMau" type="color"></label>
+              <input type="text" maxlength="7" name="chonseColor" id="chonseColor" placeholder="Nhập mã màu VD: #773131" class="form-control" required="required">
+
+              <label for="">Hình Ảnh</label><br/>
+              <div class="form-group input-group">    
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
+                </div>
+                <input name="hinhAnh" type="file" class="form-control" required="required">
+              </div> <!-- form-group// -->            
+              <div class="form-group">
+                  <button type="submit" id="taoMauXe" class="btn btn-primary btn-block">Thêm</button>
+              </div> <!-- form-group// -->                                                            
+            </form>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Add End-->
+
+<!-- Modal Show Màu xe -->
+<div class="modal fade" id="mauShowModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>MÀU XE CHI TIẾT</h3>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div style="max-width: 1200px;">
+          <h5>Tên màu: <span id="stenMau"></span></h5>
+          <h5>Mã màu: <span id="smaMau"></span></h5>
+          <img id="sHinhAnh" alt="Màu xe"> <br/><br/>
+          <button id="deleteMauXe" class="btn btn-danger">Xoá</button>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Add End-->
+
 @endsection
 @section('local_script')
 @endsection

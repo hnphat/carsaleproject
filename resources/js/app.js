@@ -26,4 +26,5 @@ $(function(){
     require('./dongxe');
     require('./tinxe');
     require('./xe');
+    require('./tintuc');
 });

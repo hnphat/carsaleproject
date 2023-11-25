@@ -92,11 +92,28 @@ let xeTable = $('#xeTable').DataTable({
                 }
             } 
         },
+        {   
+            "data": null,
+            render: function(data, type, row) {                           
+               if (row.mauXe.length != 0) {
+                   let arr = row.mauXe;
+                   let txt = ``;
+                   for (let i = 0; i < arr.length; i++) {
+                    const ele = arr[i];
+                    txt += `<strong id="colorCheck" data-id="${ele.id}" style="color: ${ele.maMau}" data-toggle='modal' data-target='#mauShowModal'>${ele.tenMau}</strong>` + `<br/>`
+                   }
+                   return txt;
+                } 
+                else 
+               return "<strong class='text-secondary'>Chưa có</strong>"
+            } 
+        },
         {
             "data": null,
             render: function(data, type, row) {                           
-                return "<button id='getEditXe' data-id='"+row.id+"' class='btn btn-success btn-sm'><span class='fa fa-edit'></span></button>" + "&nbsp;" +
-                "<button id='deleteXe' data-id='"+row.id+"' class='btn btn-warning btn-sm'><span class='fa fa-minus-circle'></span></button>";     
+                return "<button id='mauXe' data-id='"+row.id+"' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#mauXeShowModal'>Màu xe</button>"
+                + "<button id='getEditXe' data-id='"+row.id+"' class='btn btn-success btn-sm'><span class='fa fa-edit'></span></button>" 
+                + "&nbsp;<button id='deleteXe' data-id='"+row.id+"' class='btn btn-warning btn-sm'><span class='fa fa-minus-circle'></span></button>";    
             }
         }
     ]
@@ -150,6 +167,7 @@ $("#taoXe").click(function(){
             },
             error: function(response){
                 console.log(response);
+                Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
                 $("#taoXe").attr('disabled', false).html("Thêm");
             }
         });
@@ -205,7 +223,7 @@ $(document).on('click','#deleteXe', function(){
               
             },
             error: function(response) {
-               Swal.fire("Thông báo", response.responseJSON.message, "error");
+               Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
             }
         });
     } 
@@ -248,7 +266,117 @@ $("#capNhatXe").click(function(){
             },
             error: function(response){
                 console.log(response);
+                Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
                 $("#capNhatXe").attr('disabled', false).html("Cập nhật");
+            }
+        });
+    }
+});
+
+$('#maMau').on('change',function(){
+	$('#chonseColor').val($(this).val());
+});
+
+$(document).on('click','#mauXe', function(){
+    idXe = $(this).data('id');
+    console.log(idXe);
+    $("input[name=idXe]").val(idXe);
+});
+
+$("#taoMauXe").click(function(){   
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $("#addMauXeForm").one("submit", submitFormFunction);
+    function submitFormFunction(e) {
+        e.preventDefault();   
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: url_base + "/postmauxe",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $("#taoXe").attr('disabled', true).html("Đang thêm mới...");
+            },
+            success: (response) => {
+                console.log(response);
+                if (response.code == 200) {
+                    this.reset();
+                    $('.close:visible').click();
+                    xeTable.ajax.reload();
+                    Swal.fire("Thông báo", response.message, response.type);
+                } else {
+                    Swal.fire("Thông báo", response.message, response.type);
+                }
+                $("#taoXe").attr('disabled', false).html("Thêm");
+            },
+            error: function(response){
+                console.log(response);
+                Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
+                $("#taoXe").attr('disabled', false).html("Thêm");
+            }
+        });
+    }
+});
+
+$(document).on('click','#colorCheck', function(){
+    let idMauXe = $(this).data('id');
+    $('#deleteMauXe').data('id', idMauXe);
+    $.ajax({
+        type:'get',
+        url: url_base + "/getmauxe",
+        data: {
+            "id": idMauXe
+        },
+        success: (response) => {
+            console.log(response);  
+            if(response.code == 200) {
+                $("#stenMau").text(response.data.tenMau);     
+                $("#stenMau").attr("style", "color: " + response.data.maMau);
+                $("#smaMau").text(response.data.maMau);        
+                $("#smaMau").attr("style", "color: " + response.data.maMau);
+                $("#sHinhAnh").attr("src","./upload/mauxe/" + response.data.hinhAnh);  
+            } else {
+                $("#stenMau").text("");        
+                $("#smaMau").text("");        
+                $("#sHinhAnh").attr("src","#");  
+            }
+        },
+        error: function(response){
+            console.log(response);
+        }
+    });
+});
+
+$("#deleteMauXe").click(function(){
+    let id = $(this).data('id');
+    let token = $('meta[name="csrf-token"]').attr('content');
+    if (confirm("Bạn có chắc muốn xoá?")) {
+        $.ajax({
+            url: url_base + "/deletemauxe",
+            type: "post",
+            dataType: "json",
+            data: {
+                "_token": token,
+                "id": id
+            },
+            success: function(response) {   
+               if (response.code == 200) {
+                $('.close:visible').click();
+                Swal.fire("Thông báo", response.message, response.type);
+                xeTable.ajax.reload();
+               } else {
+                Swal.fire("Thông báo", response.message, response.type);
+               }
+              
+            },
+            error: function(response) {
+               Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
             }
         });
     }

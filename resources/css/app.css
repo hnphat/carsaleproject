@@ -5,3 +5,11 @@
 .picminiedit {
     max-width: 300px;
 }
+
+#colorCheck:hover {
+    cursor: pointer;
+}
+
+#sHinhAnh {
+    max-width: 500px;
+}

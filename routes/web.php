@@ -10,6 +10,7 @@ use App\Http\Controllers\DongXeController;
 use App\Http\Controllers\TinXeController;
 use App\Http\Controllers\XeController;
 use App\Http\Controllers\MauXeController;
+use App\Http\Controllers\TinTucController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,18 +84,21 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::post('/delete',[XeController::class, 'delete'])->name('delete');
             Route::get('/getedit/{idxe}',[XeController::class, 'getEdit'])->name('getedit');
             Route::post('/getedit/{idxe}/postedit',[XeController::class, 'postEdit'])->name('postedit');
+            Route::post('/postmauxe',[MauXeController::class, 'postMauXe']);
+            Route::get('/getmauxe',[MauXeController::class, 'getMauXe']);
+            Route::post('/deletemauxe',[MauXeController::class, 'deleteMauXe']);
         });        
     });
-    Route::prefix('mauxe')->group(function(){
-        Route::name('mauxe.')->group(function(){
-            Route::get('/',[MauXeController::class, 'index'])->name('panel');
-            // Route::get('/getdata',[MauXeController::class, 'loadData']);
-            // Route::get('/gettinxe',[MauXeController::class, 'getTinXe']);
-            // Route::get('/themmoi',[MauXeController::class, 'themMoi'])->name('post.themmoi');
-            // Route::post('/themmoi/post',[MauXeController::class, 'postData'])->name('post');
-            // Route::post('/delete',[MauXeController::class, 'delete'])->name('delete');
-            // Route::get('/getedit/{idxe}',[MauXeController::class, 'getEdit'])->name('getedit');
-            // Route::post('/getedit/{idxe}/postedit',[MauXeController::class, 'postEdit'])->name('postedit');
+    Route::prefix('tintuc')->group(function(){
+        Route::name('tintuc.')->group(function(){
+            Route::get('/',[TinTucController::class, 'index'])->name('panel');
+            Route::get('/getdata',[TinTucController::class, 'loadData']);
+            Route::get('/gettintuc',[TinTucController::class, 'getTinTuc']);
+            Route::get('/themmoi',[TinTucController::class, 'themMoi'])->name('post.themmoi');
+            Route::post('/themmoi/post',[TinTucController::class, 'postData'])->name('post');
+            Route::post('/delete',[TinTucController::class, 'delete'])->name('delete');
+            Route::get('/getedit/{idtintuc}',[TinTucController::class, 'getEdit'])->name('getedit');
+            Route::post('/getedit/{idtintuc}/postedit',[TinTucController::class, 'postEdit'])->name('postedit');
         });        
     });
 });

@@ -49,13 +49,15 @@
                   <p>Xe</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{route('mauxe.panel')}}" class="nav-link">
-                  <i class="fa fa-caret-right nav-icon"></i>
-                  <p>Màu xe</p>
-                </a>
-              </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('tintuc.panel')}}" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+                Quản lý tin tức
+              </p>
+            </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

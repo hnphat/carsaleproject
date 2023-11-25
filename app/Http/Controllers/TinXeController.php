@@ -115,12 +115,8 @@ class TinXeController extends Controller
             ]);
         }
 
-        if ($flag1 && $flag2) {          
-            // Xử lý upload hình ảnh  
-            $file1->move('upload/tinxe/', $nameFile1 . "." . $etc1);
+        if ($flag1 && $flag2) {      
             $data->hinhAnh = $nameFile1  . "." . $etc1;
-            // Xử lý upload thông số kỹ thuật
-            $file2->move('upload/tinxe/thongsokythuat', $nameFile2 . "." . $etc2);
             $data->thongSoKyThuat = $nameFile2 . "." . $etc2;
         } else {
             return response()->json([
@@ -133,7 +129,12 @@ class TinXeController extends Controller
         $data->save();
 
         if ($data) {
-
+            if ($flag1 && $flag2) {      
+                // Xử lý upload hình ảnh  
+                $file1->move('upload/tinxe/', $nameFile1 . "." . $etc1);
+                // Xử lý upload thông số kỹ thuật
+                $file2->move('upload/tinxe/thongsokythuat', $nameFile2 . "." . $etc2);
+            }
             return response()->json([
                 'code' => 200,
                 'type' => "info",
@@ -246,7 +247,6 @@ class TinXeController extends Controller
             if (file_exists('upload/tinxe/' . $data->hinhAnh) && !empty($data->hinhAnh))
                 unlink('upload/tinxe/'.$data->hinhAnh);        
             // Xử lý upload hình ảnh  
-            $file1->move('upload/tinxe/', $nameFile1 . "." . $etc1);
             $data->hinhAnh = $nameFile1  . "." . $etc1;           
         } 
 
@@ -255,13 +255,22 @@ class TinXeController extends Controller
             if (file_exists('upload/tinxe/thongsokythuat/' . $data->thongSoKyThuat) && !empty($data->thongSoKyThuat))
                 unlink('upload/tinxe/thongsokythuat/'.$data->thongSoKyThuat);    
             // Xử lý upload thông số kỹ thuật
-            $file2->move('upload/tinxe/thongsokythuat', $nameFile2 . "." . $etc2);
             $data->thongSoKyThuat = $nameFile2 . "." . $etc2;
         }
 
         $data->save();
 
         if ($data) {
+            if ($flag1) {    
+                // Xử lý upload hình ảnh  
+                $file1->move('upload/tinxe/', $nameFile1 . "." . $etc1);    
+            } 
+    
+            if ($flag2) {
+                // Xử lý upload thông số kỹ thuật
+                $file2->move('upload/tinxe/thongsokythuat', $nameFile2 . "." . $etc2);
+            }
+
             return response()->json([
                 'code' => 200,
                 'type' => "info",

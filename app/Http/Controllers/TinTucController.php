@@ -3,61 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Xe;
-use App\Models\DongXe;
-use App\Models\TinXe;
-use App\Models\MauXe;
+use App\Models\TinTuc;
 
-class XeController extends Controller
+class TinTucController extends Controller
 {
     //
     public function index() {
-        return view('server.xe.xe');
+        return view('server.tintuc.tintuc');
     }
 
     public function loadData() {
-        $arr = [];
-        $data = Xe::select("*")->orderBy('id', 'desc')->get();
-        foreach($data as $row) {
-            $arrMauXe = [];
-            $temp = $row;
-            $dongXe = DongXe::find($row->idDongXe);
-            $mauXe = MauXe::where('idXe',$row->id)->get();
-            if ($mauXe) {
-                foreach($mauXe as $rowMauXe) {
-                    $obj = [];
-                    $obj = (object) $obj;
-                    $obj->tenMau = $rowMauXe->tenMau;
-                    $obj->hinhAnh = $rowMauXe->hinhAnh;
-                    $obj->maMau = $rowMauXe->maMau;
-                    $obj->idXe = $row->id;
-                    $obj->id = $rowMauXe->id;
-                    array_push($arrMauXe, $obj);
-                }
-            }
-            $temp->dongXe = $dongXe->name;
-            $temp->mauXe = $arrMauXe;
-            array_push($arr, $temp);
-        }
-
+        $data = TinTuc::select("*")->orderBy('id', 'desc')->get();
         if ($data)
             return response()->json([
-                'status_code' => 200,
+                'code' => 200,
                 'message' => 'Load data success',
-                'data' => $arr,
+                'data' => $data,
             ]);
         else
             return response()->json([
-                'status_code' => 500,
+                'code' => 500,
                 'message' => 'Load data fail',
                 'data' => null,
             ]); 
     }
 
     public function themMoi() {
-        $dongXe = DongXe::all();
-        $tinXe = TinXe::all();
-        return view('server.xe.themmoi', ['dongXe' => $dongXe, 'tinXe' => $tinXe]);
+        return view('server.tintuc.themmoi');
     }
 
     public function postData(Request $request) {
@@ -65,19 +37,15 @@ class XeController extends Controller
         $file1 = null;
         $nameFile1 = "";
         $etc1 = "";
-        $data = new Xe();
-        $data->name = $request->tenXe;
-        $data->idDongXe = $request->dongXe;
-        $data->slugName = \HelpFunction::changeTitle($request->tenXe);
-        $data->loaiXe = $request->loaiXe;
-        $data->hopSo = $request->hopSo;
-        $data->nhienLieu = $request->nhienLieu;
-        $data->choNgoi = $request->choNgoi;
-        $data->giaBan = $request->giaBan;
-        $data->isNew = $request->isNew ? true : false;
-        $data->isKhuyenMai = $request->isKhuyenMai ? true : false;
-        $data->isShow = $request->isShow ? true : false;
-        $data->tinXe = $request->tinXe;
+        $data = new TinTuc();
+        $data->name = $request->tieuDe;
+        $data->loaiTin = $request->loaiTin;
+        $data->slugName = \HelpFunction::changeTitle($request->tieuDe);
+        $data->moTa = $request->moTa;
+        $data->content = $request->noiDung;
+        $data->thuThap = $request->thuThap ? true : false;
+        $data->quangCaoRamdom = $request->isAds ? true : false;
+        $data->show = $request->hienThi ? true : false;
 
         if ($request->hasFile('hinhAnh')){
             $file1 = $request->file('hinhAnh');
@@ -97,10 +65,12 @@ class XeController extends Controller
                         'type' => "error",
                         'message' => 'File hình ảnh dung lượng vượt hơn cho phép (2MB)'                
                     ]);
-                while(file_exists("upload/xe/" . $nameFile1  . "." . $etc1)) {
+                while(file_exists("upload/tintuc/" . $nameFile1  . "." . $etc1)) {
                     $nameFile1 = rand() . "-" . $nameFile1;
                 }
                 $flag1 = true;
+                // $file->move('upload/tinxe/', $name . "." . $etc);
+                // $data->hinhAnh = $name  . "." . $etc;
             }
         } else {
             return response()->json([
@@ -110,8 +80,8 @@ class XeController extends Controller
             ]);
         }
 
-        if ($flag1) {       
-            $data->hinhAnh = $nameFile1  . "." . $etc1;
+        if ($flag1) {      
+            $data->hinhAnh = $nameFile1  . "." . $etc1;           
         } else {
             return response()->json([
                 'code' => 500,
@@ -125,7 +95,7 @@ class XeController extends Controller
         if ($data) {
             if ($flag1) {      
                 // Xử lý upload hình ảnh  
-                $file1->move('upload/xe/', $nameFile1 . "." . $etc1);
+                $file1->move('upload/tintuc/', $nameFile1 . "." . $etc1);              
             }
             return response()->json([
                 'code' => 200,
@@ -141,8 +111,27 @@ class XeController extends Controller
         }
     }
 
-    public function getTinXe(Request $request) {
-        $data = TinXe::find($request->id);
+    public function delete(Request $request) {
+        $data = TinTuc::find($request->id);
+        if (file_exists('upload/tintuc/' . $data->hinhAnh) && !empty($data->hinhAnh))
+            unlink('upload/tintuc/'.$data->hinhAnh);
+        $data->delete();
+        if ($data)
+            return response()->json([
+                'code' => 200,
+                'message' => 'Đã xoá',
+                'type' => 'success'
+            ]);
+        else
+            return response()->json([
+                'code' => 500,
+                'message' => 'Không thể xoá',
+                'type' => 'error'
+            ]); 
+    }
+
+    public function getTinTuc(Request $request) {
+        $data = TinTuc::find($request->id);
         if ($data) {
             return response()->json([
                 'code' => 200,
@@ -162,50 +151,25 @@ class XeController extends Controller
         }
     }
 
-    public function delete(Request $request) {
-        $data = Xe::find($request->id);
-        if (file_exists('upload/xe/' . $data->hinhAnh) && !empty($data->hinhAnh))
-            unlink('upload/xe/'.$data->hinhAnh);
-        $data->delete();
-        if ($data)
-            return response()->json([
-                'code' => 200,
-                'message' => 'Đã xoá',
-                'type' => 'success'
-            ]);
-        else
-            return response()->json([
-                'code' => 500,
-                'message' => 'Không thể xoá',
-                'type' => 'error'
-            ]); 
+    public function getEdit($idtintuc) {
+        $data = TinTuc::find($idtintuc);
+        return view('server.tintuc.capnhat', ['data' => $data]);
     }
 
-    public function getEdit($idxe) {
-        $data = Xe::find($idxe);
-        $dongXe = DongXe::all();
-        $tinXe = TinXe::all();
-        return view('server.xe.capnhat', ['data' => $data, 'dongXe' => $dongXe, 'tinXe' => $tinXe]);
-    }
-
-    public function postEdit(Request $request, $idxe) {
+    public function postEdit(Request $request, $idtintuc) {
         $flag1 = false;
         $file1 = null;
         $nameFile1 = "";
         $etc1 = "";
-        $data = Xe::find($idxe);
-        $data->name = $request->etenXe;
-        $data->idDongXe = $request->edongXe;
-        $data->slugName = \HelpFunction::changeTitle($request->etenXe);
-        $data->loaiXe = $request->eloaiXe;
-        $data->hopSo = $request->ehopSo;
-        $data->nhienLieu = $request->enhienLieu;
-        $data->choNgoi = $request->echoNgoi;
-        $data->giaBan = $request->egiaBan;
-        $data->isNew = $request->eisNew ? true : false;
-        $data->isKhuyenMai = $request->eisKhuyenMai ? true : false;
-        $data->isShow = $request->eisShow ? true : false;
-        $data->tinXe = $request->etinXe;
+        $data = TinTuc::find($idtintuc);
+        $data->name = $request->etieuDe;
+        $data->loaiTin = $request->eloaiTin;
+        $data->slugName = \HelpFunction::changeTitle($request->etieuDe);
+        $data->moTa = $request->emoTa;
+        $data->content = $request->enoiDung;
+        $data->thuThap = $request->ethuThap ? true : false;
+        $data->quangCaoRamdom = $request->eisAds ? true : false;
+        $data->show = $request->ehienThi ? true : false;
 
         if ($request->hasFile('ehinhAnh')){
             $file1 = $request->file('ehinhAnh');
@@ -225,26 +189,23 @@ class XeController extends Controller
                         'type' => "error",
                         'message' => 'File hình ảnh dung lượng vượt hơn cho phép (2MB)'                
                     ]);
-                while(file_exists("upload/xe/" . $nameFile1  . "." . $etc1)) {
+                while(file_exists("upload/tintuc/" . $nameFile1  . "." . $etc1)) {
                     $nameFile1 = rand() . "-" . $nameFile1;
                 }
                 $flag1 = true;
             }
         } 
 
-        if ($flag1) {          
-             // Xoá hình ảnh nếu có
-            if (file_exists('upload/xe/' . $data->hinhAnh) && !empty($data->hinhAnh))
-                unlink('upload/xe/'.$data->hinhAnh);        
-            $data->hinhAnh = $nameFile1  . "." . $etc1;
+        if ($flag1) {      
+            $data->hinhAnh = $nameFile1  . "." . $etc1;           
         } 
 
         $data->save();
 
         if ($data) {
-            if ($flag1) {   
+            if ($flag1) {      
                 // Xử lý upload hình ảnh  
-                $file1->move('upload/xe/', $nameFile1 . "." . $etc1);
+                $file1->move('upload/tintuc/', $nameFile1 . "." . $etc1);              
             }
             return response()->json([
                 'code' => 200,

@@ -1,5 +1,5 @@
 let url_base = window.location.pathname;
-let tinXeTable = $('#tinXeTable').DataTable({
+let tinTucTable = $('#tinTucTable').DataTable({
     // paging: false,    use to show all data
     responsive: true,
     dom: 'Blfrtip',
@@ -21,21 +21,31 @@ let tinXeTable = $('#tinXeTable').DataTable({
         {   
             "data": null,
             render: function(data, type, row) {                           
-                return `<a id="openTinXe" href="#" data-idtinxe="${row.id}" data-toggle="modal" data-target="#tinXeShowModal">${row.name}</a>`;
+                return `<a id="openTinTuc" href="#" data-idtintuc="${row.id}" data-toggle="modal" data-target="#tinTucShowModal">${row.name}</a>`;
             } 
         },
-        // { "data": "slugName" },
         {   
             "data": null,
             render: function(data, type, row) {                           
                 if (row.hinhAnh) {
-                   return `<img class='picmini' src='./upload/tinxe/${row.hinhAnh}' alt='name'/>`;
+                   return `<img class='picmini' src='./upload/tintuc/${row.hinhAnh}' alt='name'/>`;
                 } else {
                     return "";
                 }
             } 
         },
         { "data": "moTa" },
+        {   
+            "data": null,
+            render: function(data, type, row) {                           
+               switch(row.loaiTin) {
+                case "KM":  return `<strong class="text-primary">Tin khuyến mãi</strong>`;break;
+                case "HAGI":  return `<strong class="text-pink">Tin Hyundai An Giang</strong>`;break;
+                case "KINHNGHIEM":  return `<strong class="text-info">Tin tức và chia sẽ kinh nghiệm</strong>`;break;
+                case "KHAC":  return `<strong>Tin khác</strong>`;break;
+               }
+            } 
+        },
         {   
             "data": null,
             render: function(data, type, row) {                           
@@ -59,36 +69,36 @@ let tinXeTable = $('#tinXeTable').DataTable({
         {   
             "data": null,
             render: function(data, type, row) {                           
-                if (row.thongSoKyThuat) {
-                    return `<strong><a href='./upload/tinxe/thongsokythuat/${row.thongSoKyThuat}' target='_blank'>Xem</a></strong>`;
+                if (row.show) {
+                    return "<strong class='text-success'>Có</strong>";
                 } else {
-                    return "";
+                    return "<strong class='text-danger'>Không</strong>";
                 }
             } 
         },
         {
             "data": null,
             render: function(data, type, row) {                           
-                return "<button id='getEditTinXe' data-id='"+row.id+"' class='btn btn-success btn-sm'><span class='fa fa-edit'></span></button>" + "&nbsp;" +
-                "<button id='deleteTinXe' data-id='"+row.id+"' class='btn btn-warning btn-sm'><span class='fa fa-minus-circle'></span></button>";     
+                return "<button id='getEditTinTuc' data-id='"+row.id+"' class='btn btn-success btn-sm'><span class='fa fa-edit'></span></button>" + "&nbsp;" +
+                "<button id='deleteTinTuc' data-id='"+row.id+"' class='btn btn-warning btn-sm'><span class='fa fa-minus-circle'></span></button>";     
             }
         }
     ]
 });
-tinXeTable.on('order.dt search.dt', function () {
-    tinXeTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+tinTucTable.on('order.dt search.dt', function () {
+    tinTucTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
         cell.innerHTML = i+1;
-        tinXeTable.cell(cell).invalidate('dom');
+        tinTucTable.cell(cell).invalidate('dom');
     } );
 } ).draw();
 
-$("#taoTinXe").click(function(){   
+$("#taoTinTuc").click(function(){   
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $("#addTinXeForm").one("submit", submitFormFunction);
+    $("#addTinTucForm").one("submit", submitFormFunction);
     function submitFormFunction(e) {
         e.preventDefault();   
         var formData = new FormData(this);
@@ -100,7 +110,7 @@ $("#taoTinXe").click(function(){
             contentType: false,
             processData: false,
             beforeSend: function () {
-                $("#taoTinXe").attr('disabled', true).html("Đang thêm mới...");
+                $("#taoTinTuc").attr('disabled', true).html("Đang thêm mới...");
             },
             success: (response) => {
                 console.log(response);
@@ -110,18 +120,18 @@ $("#taoTinXe").click(function(){
                 } else {
                     Swal.fire("Thông báo", response.message, response.type);
                 }
-                $("#taoTinXe").attr('disabled', false).html("Thêm");
+                $("#taoTinTuc").attr('disabled', false).html("Thêm");
             },
             error: function(response){
                 console.log(response);
                 Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
-                $("#taoTinXe").attr('disabled', false).html("Thêm");
+                $("#taoTinTuc").attr('disabled', false).html("Thêm");
             }
         });
     }
 });
 
-$(document).on('click','#deleteTinXe', function(){
+$(document).on('click','#deleteTinTuc', function(){
     let id = $(this).data('id');
     let token = $('meta[name="csrf-token"]').attr('content');
     if (confirm("Bạn có chắc muốn xoá?")) {
@@ -136,7 +146,7 @@ $(document).on('click','#deleteTinXe', function(){
             success: function(response) {   
                if (response.code == 200) {
                 Swal.fire("Thông báo", response.message, response.type);
-                tinXeTable.ajax.reload();
+                tinTucTable.ajax.reload();
                } else {
                 Swal.fire("Thông báo", response.message, response.type);
                }
@@ -149,18 +159,18 @@ $(document).on('click','#deleteTinXe', function(){
     } 
 });
 
-$(document).on('click','#getEditTinXe', function(){
-    let idtinxe = $(this).data('id');
-    open(url_base + "/getedit/" + idtinxe,'_blank');
+$(document).on('click','#getEditTinTuc', function(){
+    let idtintuc = $(this).data('id');
+    open(url_base + "/getedit/" + idtintuc,'_blank');
 });
 
-$("#capNhatTinXe").click(function(){   
+$("#capNhatTinTuc").click(function(){   
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $("#editTinXeForm").one("submit", submitFormFunction);
+    $("#editTinTucForm").one("submit", submitFormFunction);
     function submitFormFunction(e) {
         e.preventDefault();   
         var formData = new FormData(this);
@@ -172,12 +182,12 @@ $("#capNhatTinXe").click(function(){
             contentType: false,
             processData: false,
             beforeSend: function () {
-                $("#capNhatTinXe").attr('disabled', true).html("Đang cập nhật...");
+                $("#capNhatTinTuc").attr('disabled', true).html("Đang cập nhật...");
             },
             success: (response) => {
                 console.log(response);
                 Swal.fire("Thông báo", response.message, response.type);
-                $("#capNhatTinXe").attr('disabled', false).html("Cập nhật");
+                $("#capNhatTinTuc").attr('disabled', false).html("Cập nhật");
                 if (response.code == 200) {
                     setTimeout(() => {
                         location.reload();
@@ -187,20 +197,20 @@ $("#capNhatTinXe").click(function(){
             error: function(response){
                 console.log(response);
                 Swal.fire("Thông báo lỗi", response.responseJSON.message, "error");
-                $("#capNhatTinXe").attr('disabled', false).html("Cập nhật");
+                $("#capNhatTinTuc").attr('disabled', false).html("Cập nhật");
             }
         });
     }
 });
 
-$(document).on('click','#openTinXe', function(){
-    let idTinXe = $(this).data('idtinxe');
-    console.log(idTinXe);
+$(document).on('click','#openTinTuc', function(){
+    let idTinTuc = $(this).data('idtintuc');
+    console.log(idTinTuc);
     $.ajax({
         type:'get',
-        url: url_base + "/gettinxe",
+        url: url_base + "/gettintuc",
         data: {
-            "id": idTinXe
+            "id": idTinTuc
         },
         success: (response) => {
             console.log(response);  
