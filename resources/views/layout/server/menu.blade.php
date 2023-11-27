@@ -15,10 +15,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('cauhinh.panel')}}" class="nav-link">
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
-                Cấu hình tổng thể
+                Cấu hình
               </p>
             </a>
           </li>
@@ -27,6 +27,14 @@
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
                 Quản lý tài khoản
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('menu.panel')}}" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+               Quản lý Menu
               </p>
             </a>
           </li>
@@ -87,12 +95,6 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa fa-caret-right nav-icon"></i>
-                  <p>Tạo bộ thu thập</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-caret-right nav-icon"></i>
                   <p>Dữ liệu thu thập</p>
                 </a>
               </li>
@@ -109,14 +111,6 @@
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
                 Tuyển dụng
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-chevron-right"></i>
-              <p>
-                Footer
               </p>
             </a>
           </li>

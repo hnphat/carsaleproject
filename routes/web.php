@@ -12,6 +12,8 @@ use App\Http\Controllers\XeController;
 use App\Http\Controllers\MauXeController;
 use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\CauHinhController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +113,31 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::post('/delete',[SliderController::class, 'delete'])->name('delete');
             Route::get('/getedit',[SliderController::class, 'getEdit'])->name('getedit');
             Route::post('/postedit',[SliderController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('cauhinh')->group(function(){
+        Route::name('cauhinh.')->group(function(){
+            Route::get('/',[CauHinhController::class, 'index'])->name('panel');
+            Route::post('/post',[CauHinhController::class, 'postData'])->name('post');
+        });        
+    });
+    Route::prefix('menu')->group(function(){
+        Route::name('menu.')->group(function(){
+            Route::get('/',[MenuController::class, 'index'])->name('panel');
+            Route::get('/getdata',[MenuController::class, 'loadData']);
+            Route::post('/post',[MenuController::class, 'postData'])->name('post');
+            Route::post('/delete',[MenuController::class, 'delete'])->name('delete');
+            Route::get('/getedit',[MenuController::class, 'getEdit'])->name('getedit');
+            Route::post('/postedit',[MenuController::class, 'postEdit'])->name('postedit');
+            // Submenu
+            Route::post('/submenu/post',[MenuController::class, 'postDataSubMenu'])->name('submenu.post');
+            Route::post('/submenu/delete',[MenuController::class, 'deleteSubMenu'])->name('submenu.delete');
+            Route::post('/setoff',[MenuController::class, 'setOff'])->name('setoff');
+            Route::post('/seton',[MenuController::class, 'setOn'])->name('seton');
+            Route::get('/getedit',[MenuController::class, 'getEdit'])->name('getedit');
+            Route::get('/submenu/getedit',[MenuController::class, 'getEditSubMenu'])->name('geteditsubmenu');
+            Route::post('/submenu/postedit',[MenuController::class, 'postEditSubMenu'])->name('submenu.postedit');
+
         });        
     });
 });

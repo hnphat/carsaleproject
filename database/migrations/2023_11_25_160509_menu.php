@@ -16,7 +16,7 @@ class Menu extends Migration
         Schema::create('menu', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->boolean('staticLink')->default(true);
+            $table->boolean('isBaiViet')->default(true);
             $table->string('link')->nullable();
             $table->integer('baiViet')->nullable();
             $table->boolean('isShow')->default(true);

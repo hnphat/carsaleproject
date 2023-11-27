@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class SubMenu extends Model
 {
     use HasFactory;
-    protected $table = "slider";
+    protected $table = "sub_menu";
 }

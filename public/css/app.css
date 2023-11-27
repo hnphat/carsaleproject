@@ -21,3 +21,11 @@
 #slideShowImage {
     max-width: 300px; 
 }
+
+#setOff {
+    cursor: pointer;
+} 
+
+#setOn {
+    cursor: pointer;
+}

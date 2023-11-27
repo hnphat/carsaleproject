@@ -67,50 +67,46 @@
 <div id="hotlines" class="container-fluid">
     <div class="container hyundai-normalfont">
         <div class="row">
-            <div class="col-sm-3 text-center">
-                <h5>0901 123 456</h5>
+            <div class="col-sm-4 text-center">
+                <h5><a href="tel:0868505050">0868 50 50 50</a></h5>
                 <p>Hotline kinh doanh</p>
             </div>
-            <div class="col-sm-3 text-center">            
-                <h5>0901 123 456</h5>
-                <p>Hotline kinh doanh</p>
+            <div class="col-sm-4 text-center">            
+                <h5><a href="tel:0869505020">0869 50 50 20</a></h5>
+                <p>Hotline dịch vụ</p>
             </div>
-            <div class="col-sm-3 text-center">            
-                <h5>0901 123 456</h5>
-                <p>Hotline kinh doanh</p>
-            </div>
-            <div class="col-sm-3 text-center">            
-                <h5>0901 123 456</h5>
-                <p>Hotline kinh doanh</p>
+            <div class="col-sm-4 text-center">            
+                <h5><a href="tel:0868505050">0868 50 50 50</a></h5>
+                <p>Hotline CSKH</p>
             </div>
         </div>
     </div>
 </div>
 <div id="footer" class="container-fluid hyundai-normalfont">
     <div class="infomation">
-        <p>Hyundai An Giang <br/>
-        Địa chỉ: Khóm Trung Thạnh, Phường Mỹ Thới, Thành phố Long Xuyên, Tỉnh An Giang <br/>
-        Số điện thoại: 0868.50.50.50 <br/>
-        Email: phongcskh@hyundaiangiang.com</p>
+        <p>{{$data['tenCongTy']}} <br/>
+        Địa chỉ: {{$data['diaChi']}} <br/>
+        Số điện thoại: {{$data['soDienThoai']}} <br/>
+        Email: {{$data['email']}}</p>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15699.178299568262!2d105.45625730000003!3d10.358304045070984!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x53279b074297bcfc!2zQ8O0bmcgdHkgVE5ISCBUTSAmIERWIMOUIHTDtCBQaMO6YyBBbmg!5e0!3m2!1svi!2s!4v1576569042693!5m2!1svi!2s" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            <iframe src="{{$data['srcMap']}}" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </div>
         <div class="col-sm-3 infomation">
-            <h5>DỊCH VỤ</h5>
-            <p>Chương trình dịch vụ<br/>
-            Bảo hành<br/>
-            Phụ tùng và phụ kiện chính hãng<br/>
-            Đặt lịch hẹn sửa chữa</p>
+            <h5>{{$data['title1']}}</h5>
+            <p><a href="{{$data['t1linkrow1']}}">{{$data['t1row1']}}</a><br/>
+            <a href="{{$data['t1linkrow2']}}">{{$data['t1row2']}}</a><br/>
+            <a href="{{$data['t1linkrow3']}}">{{$data['t1row3']}}</a><br/>
+            <a href="{{$data['t1linkrow4']}}">{{$data['t1row4']}}</a></p>
         </div>
         <div class="col-sm-3 infomation">
-            <h5>MUA XE</h5>
+            <h5>{{$data['title2']}}</h5>
             <p>
-                Đăng ký tư vấn và chọn xe<br/>
-                Đăng ký lái thử<br/>
-                Góp ý khách hàng<br/><br/>
-                <img src="{{asset('')}}/images/footer/bct.png" alt="FB" width="180px">
+                <a href="{{$data['t2linkrow1']}}">{{$data['t2row1']}}</a><br/>
+                <a href="{{$data['t2linkrow2']}}">{{$data['t2row2']}}</a><br/>
+                <a href="{{$data['t2linkrow3']}}">{{$data['t2row3']}}</a><br/><br/>
+                <img src="{{asset('')}}/images/footer/bct.png" alt="BCT" width="180px">
             </p>
             
         </div>
@@ -124,11 +120,11 @@
                 </form>
             </div><br/>
             <p>Kết nối với chúng tôi: 
-                <img src="{{asset('')}}/images/footer/fb.png" alt="FB" width="50px"> 
+                <a href="{{$data['facebook']}}"><img src="{{asset('')}}/images/footer/fb.png" alt="FB" width="50px"></a>
                 &nbsp; 
-                <img src="{{asset('')}}/images/footer/zalo.png" alt="FB" width="50px">
+                <a href="{{$data['zalo']}}"><img src="{{asset('')}}/images/footer/zalo.png" alt="FB" width="50px"></a>
                 &nbsp; 
-                <img src="{{asset('')}}/images/footer/youtube.png" alt="FB" width="50px">
+                <a href="{{$data['youtube']}}"><img src="{{asset('')}}/images/footer/youtube.png" alt="FB" width="50px"></a>
             </p>
         </div>
     </div>
@@ -137,6 +133,6 @@
     </div>
 </div>
 <div class="fixedBtn">
-    <img src="{{asset('')}}/images/fixed/calling.gif" alt="FB" width="100px"><br/>
+    <a href="tel:0868505050"><img src="{{asset('')}}/images/fixed/calling.gif" alt="calling" width="100px"></a><br/>
     &nbsp;<button class="btn btn-primary"> <span class="fa fa-calculator"></span> Báo giá</button> <button class="btn btn-primary"><span class="fa fa-car"></span> Đăng ký lái thử</button>
 </div>

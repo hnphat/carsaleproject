@@ -8,7 +8,9 @@ class IndexController extends Controller
 {
     //
     public function getIndex() {
-        return view('client.trangchu');
+        $jsonString = file_get_contents('cauhinh/footer.json');
+        $data = json_decode($jsonString, true);   
+        return view('client.trangchu', ['data' => $data]);
     }
 
     public function getTin() {

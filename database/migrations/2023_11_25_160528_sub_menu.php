@@ -18,7 +18,7 @@ class SubMenu extends Migration
             $table->integer('idMenu')->unsigned();
             $table->foreign('idMenu')->references('id')->on('menu');
             $table->string('name');
-            $table->boolean('staticLink')->default(true);
+            $table->boolean('isBaiViet')->default(true);
             $table->string('link')->nullable();
             $table->integer('baiViet')->nullable();
             $table->boolean('isShow')->default(true);

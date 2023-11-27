@@ -28,4 +28,6 @@ $(function(){
     require('./xe');
     require('./tintuc');
     require('./slide');
+    require('./cauhinh');
+    require('./navi');
 });
