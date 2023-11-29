@@ -76,11 +76,6 @@ class AuthController extends Controller
             }            
         } catch (\Exception $error) {
             return redirect()->route('login_panel')->with('error','Vui lòng nhập đầy đủ thông tin!');
-            // return response()->json([
-            //     'status_code' => 500,
-            //     'message' => 'Error in Login',
-            //     'error' => $error,
-            // ]);
         }
     }
 

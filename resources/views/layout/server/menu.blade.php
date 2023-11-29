@@ -65,6 +65,12 @@
                   <p>Xe</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('vitrixe.panel')}}" class="nav-link">
+                  <i class="fa fa-caret-right nav-icon"></i>
+                  <p>Vị trí xe</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -84,30 +90,23 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('thuthap.panel')}}" class="nav-link">
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
-               Thu thập dữ liệu
-                <i class="fas fa-angle-left right"></i>
+                Data khách hàng
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-caret-right nav-icon"></i>
-                  <p>Dữ liệu thu thập</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-caret-right nav-icon"></i>
-                  <p>Dữ liệu cũ</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('luutru.panel')}}" class="nav-link">
+              <i class="nav-icon fa fa-chevron-right"></i>
+              <p>
+                Quản lý lưu trữ
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('tuyendung.panel')}}" class="nav-link">
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
                 Tuyển dụng

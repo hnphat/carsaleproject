@@ -55,7 +55,7 @@ class XeController extends Controller
     }
 
     public function themMoi() {
-        $dongXe = DongXe::all();
+        $dongXe = DongXe::select("*")->where('isShow', true)->orderBy('id','desc')->get();
         $tinXe = TinXe::all();
         return view('server.xe.themmoi', ['dongXe' => $dongXe, 'tinXe' => $tinXe]);
     }

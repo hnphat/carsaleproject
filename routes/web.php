@@ -14,6 +14,9 @@ use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CauHinhController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ThuThapController;
+use App\Http\Controllers\TuyenDungController;
+use App\Http\Controllers\ViTriXeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,7 +140,41 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
             Route::get('/getedit',[MenuController::class, 'getEdit'])->name('getedit');
             Route::get('/submenu/getedit',[MenuController::class, 'getEditSubMenu'])->name('geteditsubmenu');
             Route::post('/submenu/postedit',[MenuController::class, 'postEditSubMenu'])->name('submenu.postedit');
-
+        });        
+    });
+    Route::prefix('thuthap')->group(function(){
+        Route::name('thuthap.')->group(function(){
+            Route::get('/',[ThuThapController::class, 'index'])->name('panel');
+            Route::get('/getdata',[ThuThapController::class, 'loadData']);
+            // Route::post('/post',[ThuThapController::class, 'postData'])->name('post');
+            // Route::post('/delete',[ThuThapController::class, 'delete'])->name('delete');
+            // Route::get('/getedit',[ThuThapController::class, 'getEdit'])->name('getedit');
+            // Route::post('/postedit',[ThuThapController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('tuyendung')->group(function(){
+        Route::name('tuyendung.')->group(function(){
+            Route::get('/',[TuyenDungController::class, 'index'])->name('panel');
+            Route::get('/getdata',[TuyenDungController::class, 'loadData']);
+            // Route::post('/post',[ThuThapController::class, 'postData'])->name('post');
+            // Route::post('/delete',[ThuThapController::class, 'delete'])->name('delete');
+            // Route::get('/getedit',[ThuThapController::class, 'getEdit'])->name('getedit');
+            // Route::post('/postedit',[ThuThapController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('vitrixe')->group(function(){
+        Route::name('vitrixe.')->group(function(){
+            Route::get('/',[ViTriXeController::class, 'index'])->name('panel');
+            Route::get('/getdata',[ViTriXeController::class, 'loadData']);
+            // Route::post('/post',[ViTriXeController::class, 'postData'])->name('post');
+            // Route::post('/delete',[ViTriXeController::class, 'delete'])->name('delete');
+            // Route::get('/getedit',[ViTriXeController::class, 'getEdit'])->name('getedit');
+            // Route::post('/postedit',[ViTriXeController::class, 'postEdit'])->name('postedit');
+        });        
+    });
+    Route::prefix('luutru')->group(function(){
+        Route::name('luutru.')->group(function(){
+            Route::view('/', 'server.luutru.luutru')->name('panel');
         });        
     });
 });

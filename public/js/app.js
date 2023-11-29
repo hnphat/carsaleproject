@@ -2092,6 +2092,9 @@ $(function () {
   __webpack_require__(/*! ./slide */ "./resources/js/slide.js");
   __webpack_require__(/*! ./cauhinh */ "./resources/js/cauhinh.js");
   __webpack_require__(/*! ./navi */ "./resources/js/navi.js");
+  __webpack_require__(/*! ./thuthap */ "./resources/js/thuthap.js");
+  __webpack_require__(/*! ./tuyendung */ "./resources/js/tuyendung.js");
+  __webpack_require__(/*! ./vitrixe */ "./resources/js/vitrixe.js");
 });
 
 /***/ }),
@@ -2760,7 +2763,7 @@ $("#taoSubMenu").click(function () {
           _this2.reset();
           $('.close:visible').click();
           Swal.fire("Thông báo", response.message, response.type);
-          $("#menuAdvanceSub").hide();
+          // $("#menuAdvanceSub").hide();
           $("#linkShowSub").hide();
           $("#baiVietShowSub").show();
           navTable.ajax.reload();
@@ -3310,6 +3313,60 @@ $("#editTaiKhoan").click(function () {
 
 /***/ }),
 
+/***/ "./resources/js/thuthap.js":
+/*!*********************************!*\
+  !*** ./resources/js/thuthap.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+var url_base = window.location.pathname;
+var thuThapTable = $('#thuThapTable').DataTable({
+  // paging: false,    use to show all data
+  responsive: true,
+  dom: 'Blfrtip',
+  buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+  ajax: url_base + "/getdata",
+  "columnDefs": [{
+    "searchable": false,
+    "orderable": false,
+    "targets": 0
+  }],
+  "order": [[0, 'desc']],
+  lengthMenu: [5, 10, 25, 50, 75, 100],
+  columns: [{
+    "data": null
+  }, {
+    "data": "hoTen"
+  }, {
+    "data": "soDienThoai"
+  }, {
+    "data": "diaChi"
+  }, {
+    "data": "xeYeuCau"
+  }, {
+    "data": "linkReg"
+  }, {
+    "data": "yeuCauKhachHang"
+  }, {
+    "data": null,
+    render: function render(data, type, row) {
+      return "";
+    }
+  }]
+});
+thuThapTable.on('order.dt search.dt', function () {
+  thuThapTable.column(0, {
+    search: 'applied',
+    order: 'applied'
+  }).nodes().each(function (cell, i) {
+    cell.innerHTML = i + 1;
+    thuThapTable.cell(cell).invalidate('dom');
+  });
+}).draw();
+
+/***/ }),
+
 /***/ "./resources/js/tintuc.js":
 /*!********************************!*\
   !*** ./resources/js/tintuc.js ***!
@@ -3763,6 +3820,121 @@ $(document).on('click', '#openTinXe', function () {
     }
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/tuyendung.js":
+/*!***********************************!*\
+  !*** ./resources/js/tuyendung.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+var url_base = window.location.pathname;
+var tuyenDungTable = $('#tuyenDungTable').DataTable({
+  // paging: false,    use to show all data
+  responsive: true,
+  dom: 'Blfrtip',
+  buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+  ajax: url_base + "/getdata",
+  "columnDefs": [{
+    "searchable": false,
+    "orderable": false,
+    "targets": 0
+  }],
+  "order": [[0, 'desc']],
+  lengthMenu: [5, 10, 25, 50, 75, 100],
+  columns: [{
+    "data": null
+  }, {
+    "data": "hoTen"
+  }, {
+    "data": "ngaySinh"
+  }, {
+    "data": "soDienThoai"
+  }, {
+    "data": "hinhAnh"
+  }, {
+    "data": "CV"
+  }, {
+    "data": "trinhDo"
+  }, {
+    "data": "viTriUngTuyen"
+  }, {
+    "data": "cauHoiUngVien"
+  }, {
+    "data": null,
+    render: function render(data, type, row) {
+      return "";
+    }
+  }]
+});
+tuyenDungTable.on('order.dt search.dt', function () {
+  tuyenDungTable.column(0, {
+    search: 'applied',
+    order: 'applied'
+  }).nodes().each(function (cell, i) {
+    cell.innerHTML = i + 1;
+    tuyenDungTable.cell(cell).invalidate('dom');
+  });
+}).draw();
+
+/***/ }),
+
+/***/ "./resources/js/vitrixe.js":
+/*!*********************************!*\
+  !*** ./resources/js/vitrixe.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+var url_base = window.location.pathname;
+var viTriXeTable = $('#viTriXeTable').DataTable({
+  // paging: false,    use to show all data
+  responsive: true,
+  dom: 'Blfrtip',
+  buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+  ajax: url_base + "/getdata",
+  "columnDefs": [{
+    "searchable": false,
+    "orderable": false,
+    "targets": 0
+  }],
+  "order": [[0, 'desc']],
+  lengthMenu: [5, 10, 25, 50, 75, 100],
+  columns: [{
+    "data": null
+  }, {
+    "data": null,
+    render: function render(data, type, row) {
+      return "";
+    }
+  }, {
+    "data": null,
+    render: function render(data, type, row) {
+      return "";
+    }
+  }, {
+    "data": null,
+    render: function render(data, type, row) {
+      return "";
+    }
+  }, {
+    "data": null,
+    render: function render(data, type, row) {
+      return "";
+    }
+  }]
+});
+viTriXeTable.on('order.dt search.dt', function () {
+  viTriXeTable.column(0, {
+    search: 'applied',
+    order: 'applied'
+  }).nodes().each(function (cell, i) {
+    cell.innerHTML = i + 1;
+    viTriXeTable.cell(cell).invalidate('dom');
+  });
+}).draw();
 
 /***/ }),
 

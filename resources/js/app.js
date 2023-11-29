@@ -30,4 +30,7 @@ $(function(){
     require('./slide');
     require('./cauhinh');
     require('./navi');
+    require('./thuthap');
+    require('./tuyendung');
+    require('./vitrixe');
 });

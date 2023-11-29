@@ -168,4 +168,14 @@
 @endsection
 @section('local_script')
 <script type="text/javascript" language="javascript" src="{{asset('dist/ckeditor/ckeditor.js')}}<?php echo "?id=" . rand(1, 99999999);?>" ></script>
+<script>
+  CKEDITOR.replace('enoiDung', {
+    filebrowserBrowseUrl: '{{ asset('dist/ckfinder/ckfinder.html') }}',
+    filebrowserImageBrowseUrl: '{{ asset('dist/ckfinder/ckfinder.html?type=Images') }}',
+    filebrowserFlashBrowseUrl: '{{ asset('dist/ckfinder/ckfinder.html?type=Flash') }}',
+    filebrowserUploadUrl: '{{ asset('dist/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+    filebrowserImageUploadUrl: '{{ asset('dist/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+    filebrowserFlashUploadUrl: '{{ asset('dist/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+  });
+</script>
 @endsection

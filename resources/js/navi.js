@@ -411,7 +411,7 @@ $("#taoSubMenu").click(function(){
                     this.reset();
                     $('.close:visible').click();
                     Swal.fire("Thông báo", response.message, response.type);
-                    $("#menuAdvanceSub").hide();
+                    // $("#menuAdvanceSub").hide();
                     $("#linkShowSub").hide();
                     $("#baiVietShowSub").show();
                     navTable.ajax.reload();

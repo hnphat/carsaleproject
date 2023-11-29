@@ -62,3 +62,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Hướng dẫn
+Localhost
+Điều chỉnh file .env (Cỡ sỡ dữ liệu,...)
+Điều chỉnh file config.php trong public/dist/ckfinder tương ứng với môi trường localhost
+Điều chỉnh file luutru.blade.php tương ứng môi trường localhost
+
+Production (Host)
+Điều chỉnh file .env (Cỡ sỡ dữ liệu,...)
+Điều chỉnh file config.php trong public/dist/ckfinder tương ứng với môi trường localhost
+Điều chỉnh file luutru.blade.php tương ứng môi trường Production
