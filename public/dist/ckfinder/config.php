@@ -36,8 +36,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'localhost';
-$config['licenseKey']  = '1R8RHKPQPV3MHQUW4BGY4SKWENUL6';
+$config['licenseName'] = (isset($_SESSION['stage']) && $_SESSION['stage'] == "local") ? 'localhost' : 'hyundaiangiang.com';
+$config['licenseKey']  = (isset($_SESSION['stage']) && $_SESSION['stage'] == "local") ? '1R8RHKPQPV3MHQUW4BGY4SKWENUL6' : '93D3WH7JBHC1ECHDH8MLCU2DTLXBU';
 
 // $config['licenseName'] = 'carsale.hyundaiangiang.com';
 // $config['licenseKey']  = '5AUA64LHMCLF5NR5QHGLNYQTMUEE1';
@@ -74,7 +74,8 @@ $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
     // 'baseUrl'      => '/public/upload/ckfinder/', // using for host PA 
-    'baseUrl'      => '/carsaleproject/public/upload/ckfinder/', // using for localhost
+    // 'baseUrl'      => '/carsaleproject/public/upload/ckfinder/', // using for localhost
+    'baseUrl'      => (isset($_SESSION['stage']) && $_SESSION['stage'] == "local") ? '/carsaleproject/public/upload/ckfinder/' : '/public/upload/ckfinder/', // using for localhost
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,

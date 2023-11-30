@@ -79,7 +79,12 @@
 @section('content')
 <div class="container_fluid">
     <div id="luuTruPanel">
-        <iframe style="padding:0; margin:0; width: 100%; min-height: 500px;" src="http://localhost/carsaleproject/public/dist/ckfinder/ckfinder.html?CKEditor=noiDung&CKEditorFuncNum=1&langCode=en" frameborder="0"></iframe>
+        <iframe style="padding:0; margin:0; width: 100%; min-height: 500px;" src="
+        @if(App::environment() == 'local')
+          http://localhost/carsaleproject/public/dist/ckfinder/ckfinder.html?CKEditor=noiDung&CKEditorFuncNum=1&langCode=en
+        @else
+          https://hyundaiangiang.com/public/dist/ckfinder/ckfinder.html?CKEditor=noiDung&CKEditorFuncNum=1&langCode=en
+        @endif" frameborder="0"></iframe>
     </div>
 </div>
 @endsection

@@ -25,6 +25,7 @@
 @section('content')
 <div class="container_fluid">
     <h1>Main Panel</h1>
+    <p>{{App::environment()}}</p>
 </div>
 @endsection
 @section('local_script')

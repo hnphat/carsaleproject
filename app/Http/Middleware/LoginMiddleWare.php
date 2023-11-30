@@ -19,6 +19,7 @@ class LoginMiddleWare
     {
         if (Auth::check()) {
             $_SESSION['use_ck'] = 1;
+            $_SESSION['stage'] = config('app.env');
             return $next($request);
         } else {
             $_SESSION['use_ck'] = 0;
