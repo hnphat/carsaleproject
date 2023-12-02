@@ -129,6 +129,43 @@
   </div>
 </div>
 <!-- Modal Add End-->
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editViTriXeModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>CẬP NHẬT</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="card bg-light">
+          <article class="card-body" style="max-width: 1000px;">
+            <form id="editViTriXeForm" method="post" autocomplete="off">
+              @csrf
+              <input type="hidden" name="viTriXeId">
+              <label for="">Chọn xe</label>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-caret-right"></i> </span>
+                </div>
+                <select name="echonXe" id="echonXe" class="form-control">
+                @foreach($xe as $row)
+                    <option value="{{$row->id}}">{{$row->name}}</option>
+                @endforeach
+                </select>
+              </div> <!-- form-group// -->                
+              <div class="form-group">
+                  <button type="submit" id="editViTriXe" class="btn btn-primary btn-block">Cập nhật</button>
+              </div> <!-- form-group// -->                                                            
+            </form>
+          </article>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Edit End-->
 @endsection
 @section('local_script')
 @endsection

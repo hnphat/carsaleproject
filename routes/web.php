@@ -166,10 +166,10 @@ Route::prefix('management')->middleware(['m_login'])->group(function(){
         Route::name('vitrixe.')->group(function(){
             Route::get('/',[ViTriXeController::class, 'index'])->name('panel');
             Route::get('/getdata',[ViTriXeController::class, 'loadData']);
-            // Route::post('/post',[ViTriXeController::class, 'postData'])->name('post');
-            // Route::post('/delete',[ViTriXeController::class, 'delete'])->name('delete');
-            // Route::get('/getedit',[ViTriXeController::class, 'getEdit'])->name('getedit');
-            // Route::post('/postedit',[ViTriXeController::class, 'postEdit'])->name('postedit');
+            Route::post('/post',[ViTriXeController::class, 'postData'])->name('post');
+            Route::post('/delete',[ViTriXeController::class, 'delete'])->name('delete');
+            Route::get('/getedit',[ViTriXeController::class, 'getEdit'])->name('getedit');
+            Route::post('/postedit',[ViTriXeController::class, 'postEdit'])->name('postedit');
         });        
     });
     Route::prefix('luutru')->group(function(){

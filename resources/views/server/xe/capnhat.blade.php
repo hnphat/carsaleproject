@@ -256,6 +256,11 @@
             selected="selected"
         @endif
         >9</option>
+        <option value="16"
+        @if($data->choNgoi == 16)
+            selected="selected"
+        @endif
+        >16</option>
     </select>
   </div> <!-- form-group// -->     
   <label for="">Giá xe</label><br/>  

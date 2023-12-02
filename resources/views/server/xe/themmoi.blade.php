@@ -159,6 +159,7 @@
         <option value="6/7">6/7</option>
         <option value="7">7</option>
         <option value="9">9</option>
+        <option value="16">16</option>
     </select>
   </div> <!-- form-group// -->     
   <label for="">Giá xe</label><br/>  
