@@ -2401,7 +2401,7 @@ var navTable = $('#navTable').DataTable({
         for (var i = 0; i < subMenu.length; i++) {
           var ele = subMenu[i];
           var isShow = ele.isShow ? "<span id='setOff' data-idsub='".concat(ele.id, "' class='fa fa-eye text-warning'></span>") : "<span id='setOn' data-idsub='".concat(ele.id, "' class='fa fa-eye-slash'></span>");
-          txt += "<a href=\"#\">".concat(ele.name, "</a> <button id=\"deleteSubMenu\" data-id=\"").concat(ele.id, "\" class=\"btn btn-danger btn-xs\">X\xF3a</button> &nbsp; ").concat(isShow, " &nbsp; <a id=\"getEditSubMenu\" href=\"#\" data-idsub='").concat(ele.id, "' data-toggle='modal' data-target='#subMenuEditModal'><span class='fa fa-edit text-primary'></span></a><br/>");
+          txt += "<a target=\"_blank\" href=\"".concat(ele.isBaiViet ? './tin-tuc/' + ele.slugBaiViet : ele.link, "\">").concat(ele.name, "</a> <button id=\"deleteSubMenu\" data-id=\"").concat(ele.id, "\" class=\"btn btn-danger btn-xs\">X\xF3a</button> &nbsp; ").concat(isShow, " &nbsp; <a id=\"getEditSubMenu\" href=\"#\" data-idsub='").concat(ele.id, "' data-toggle='modal' data-target='#subMenuEditModal'><span class='fa fa-edit text-primary'></span></a><br/>");
         }
         return txt;
       } else {
@@ -2412,7 +2412,7 @@ var navTable = $('#navTable').DataTable({
     "data": null,
     render: function render(data, type, row) {
       if (row.link) {
-        return "<a href=\"".concat(row.link, "\" class=\"btn btn-info btn-sm\">Xem</a>");
+        return "<a href=\"".concat(row.link, "\" target=\"_blank\" class=\"btn btn-info btn-sm\">Xem</a>");
       } else {
         return "<strong class='text-danger'>Không</strong>";
       }
@@ -3337,6 +3337,8 @@ var thuThapTable = $('#thuThapTable').DataTable({
   columns: [{
     "data": null
   }, {
+    "data": "ngayTao"
+  }, {
     "data": "hoTen"
   }, {
     "data": "soDienThoai"
@@ -3420,7 +3422,7 @@ var tinTucTable = $('#tinTucTable').DataTable({
           return "<strong class=\"text-info\">Tin t\u1EE9c v\xE0 chia s\u1EBD kinh nghi\u1EC7m</strong>";
           break;
         case "KHAC":
-          return "<strong>Tin kh\xE1c</strong>";
+          return "<strong>Tin tuy\u1EC3n d\u1EE5ng</strong>";
           break;
       }
     }

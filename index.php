@@ -1,2 +1,3 @@
 <?php
-    header('Location: public/');
+    header('Location: https://hyundaiangiang.com/public/');
+    // header('Location: public/');

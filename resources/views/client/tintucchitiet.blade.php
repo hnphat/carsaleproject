@@ -1,81 +1,42 @@
 @extends('layout.client.index')
 @section('title')
-   Tiêu đề tin
+    {{$tinTuc->name}}
 @endsection
 @section('local_css')
 @endsection
 @section('content')
 <div class="container">
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <ol class="breadcrumb hyundai-headFont">
+            <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+            <li class="breadcrumb-item">Tin tức</li>
+            <li class="breadcrumb-item active" aria-current="page">{{$tinTuc->name}}</li>
         </ol>
     </nav>
     <div id="tinTucKhac" class="container hyundai-normalfont">        
         <div class="row text-justify">
             <div class="col-xs clearfix" id="tinTucKhacPanel"> 
-                <h4 class="hyundai-headFont">TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN TIÊU ĐỀ TIN</h4>
-                <i class="text-secondary">By Admin - 20/10/2023</i>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, vel. Tempora reiciendis quaerat quis veniam a, qui unde quos delectus? Vitae beatae nisi odio molestiae nostrum suscipit ullam, ea quae?</p>
+                <h4 class="hyundai-headFont">{{$tinTuc->name}}</h4>
+                <i class="text-secondary">By Admin - {{\HelpFunction::revertCreatedAt($tinTuc->created_at)}}</i>
+                <div id="tinTucVeXe">
+                    {!! $tinTuc->content !!}
+                </div>
                 <hr/>
                 <div id="tinTucKhac" class="container hyundai-normalfont">
                     <h4 class="hyundai-headFont">TIN LIÊN QUAN</h4>
                     <div class="text-justify">
                         <div> 
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div>     
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div>       
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div> 
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div> 
+                            @foreach($tinLienQuan as $row)
+                                <div class="rowBoxShadow clearfix">
+                                    <div class="box-img">
+                                        <a href="./tin-tuc/{{$row->slugName}}"><img src="{{asset('upload/tintuc/' . $row->hinhAnh)}}" alt="{{$row->slugName}}"></a>
+                                    </div>
+                                    <div class="boxTitle">
+                                        <a href="./tin-tuc/{{$row->slugName}}"><h5 class="hyundai-headFont">{{$row->name}}</h5></a>
+                                        <p>{{$row->moTa}}</p>
+                                    </div>
+                                </div>     
+                            @endforeach                            
                         </div>                        
                     </div>
                 </div><br>
@@ -83,62 +44,35 @@
                     <h4 class="hyundai-headFont">TIN KHUYẾN MÃI</h4>
                     <div class="text-justify">
                         <div> 
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div>     
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div>       
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div> 
-                            <div class="row rowBoxShadow">
-                                <div class="box-img">
-                                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                                </div>
-                                <div class="boxTitle">
-                                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                                </div>
-                            </div> 
+                            @foreach($tinKM as $row)
+                                <div class="rowBoxShadow clearfix">
+                                    <div class="box-img">
+                                        <a href="./tin-tuc/{{$row->slugName}}"><img src="{{asset('upload/tintuc/' . $row->hinhAnh)}}" alt="{{$row->slugName}}"></a>
+                                    </div>
+                                    <div class="boxTitle">
+                                        <a href="./tin-tuc/{{$row->slugName}}"><h5 class="hyundai-headFont">{{$row->name}}</h5></a>
+                                        <p>{{$row->moTa}}</p>
+                                    </div>
+                                </div>     
+                            @endforeach      
                         </div>                        
                     </div>
                 </div>
             </div>
             <div class="col-xs" id="aSidePanel">
                 <div class="sanPhamNoiBat">
-                    <h4><strong>Sản phẩm nổi bật</strong></h4>
+                    <h4><strong>Có thể bạn quan tâm</strong></h4>
                     <hr class="hrblue">
-                    <div class="sanPhamNoiBatRow">
-                        <img src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                        <div>
-                            Giá xe <br/>5.000.000.000
+                    @foreach($randomCar as $row)
+                        <div class="sanPhamNoiBatRow">
+                        <a href="./san-pham/{{$row->xe->tin->slugName}}">
+                            <img src="{{asset('upload/xe/' . $row->xe->hinhAnh)}}" alt="{{$row->xe->name}}">
+                            <div class="spNoiBat">
+                                Giá xe <br/> <strong class="text-danger">{{number_format($row->xe->giaBan)}}</strong>
+                            </div>
+                        </a>
                         </div>
-                    </div>
-                    <div class="sanPhamNoiBatRow">
-                        <img src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                        <div>
-                            Giá xe <br/>5.000.000.000
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

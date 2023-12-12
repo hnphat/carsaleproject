@@ -42,7 +42,7 @@ let tinTucTable = $('#tinTucTable').DataTable({
                 case "KM":  return `<strong class="text-primary">Tin khuyến mãi</strong>`;break;
                 case "HAGI":  return `<strong class="text-pink">Tin Hyundai An Giang</strong>`;break;
                 case "KINHNGHIEM":  return `<strong class="text-info">Tin tức và chia sẽ kinh nghiệm</strong>`;break;
-                case "KHAC":  return `<strong>Tin khác</strong>`;break;
+                case "KHAC":  return `<strong>Tin tuyển dụng</strong>`;break;
                }
             } 
         },

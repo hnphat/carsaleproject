@@ -24,17 +24,18 @@
       <div class="col mx-auto">
         <div class="card mt-2 mx-auto p-4 bg-light">
             <div class="card-body bg-light">       
-                <form action="" autocomplete="off">
+                <form action="{{route('post.data')}}" method="post" autocomplete="off">
+                    @csrf
                     <div class="row">
                         <div class="col-md-4">
+                            <input type="hidden" name="nguon">
                             <div class="form-group">
                                 <label for="form_need"><strong>Quý khách quan tâm dòng xe nào?</strong></label>
-                                <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                                    <option value="" selected disabled>--Select Your Issue--</option>
-                                    <option >Request Invoice for order</option>
-                                    <option >Request order status</option>
-                                    <option >Haven't received cashback yet</option>
-                                    <option >Other</option>
+                                <select id="form_need" name="chonXe" class="form-control" required="required" data-error="Vui lòng chọn">
+                                    <option value="" selected disabled>Vui lòng chọn</option>
+                                    @foreach($xe as $row)
+                                    <option value="{{$row->xe->name }}">{{$row->xe->name}}</option>
+                                    @endforeach
                                 </select>
                                 
                             </div>
@@ -42,13 +43,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="form_name"><strong>Họ tên</strong></label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Họ và tên" required="required" data-error="Firstname is required.">
+                                <input id="form_name" type="text" name="hoTen" class="form-control" placeholder="Họ và tên" required="required" data-error="Firstname is required.">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="form_lastname"><strong>Số điện thoại</strong></label>
-                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Số điện thoại" required="required" data-error="Lastname is required.">
+                                <input id="form_lastname" type="text" name="soDienThoai" class="form-control" placeholder="Số điện thoại" required="required" data-error="Lastname is required.">
                             </div>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                 <p>Hotline dịch vụ</p>
             </div>
             <div class="col-sm-4 text-center">            
-                <h5><a href="tel:0868505050">0868 50 50 50</a></h5>
+                <h5><a href="tel:02963989922">02963 98 99 22</a></h5>
                 <p>Hotline CSKH</p>
             </div>
         </div>
@@ -106,7 +107,7 @@
                 <a href="{{$data['t2linkrow1']}}">{{$data['t2row1']}}</a><br/>
                 <a href="{{$data['t2linkrow2']}}">{{$data['t2row2']}}</a><br/>
                 <a href="{{$data['t2linkrow3']}}">{{$data['t2row3']}}</a><br/><br/>
-                <img src="{{asset('')}}/images/footer/bct.png" alt="BCT" width="180px">
+                <!-- <img src="{{asset('')}}/images/footer/bct.png" alt="BCT" width="180px"> -->
             </p>
             
         </div>
@@ -114,8 +115,10 @@
             <h5>NHẬN ƯU ĐÃI MỚI NHẤT</h5>
             <div>
                 <p class="p-1">Quý khách sẽ không bỏ xót bất kỳ ưu đãi nào mới nhất từ Hyundai An Giang hãy để lại email để nhận những thông tin mới nhất</p>
-                <form class="form-inline" action="/action_page.php">
-                    <input type="emailnotify" placeholder="Địa chỉ email" id="email" width="100">                
+                <form class="form-inline" action="{{route('post.data.email')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="nguonNhapEmail">
+                    <input type="email" placeholder="Địa chỉ email" name="emailReg" width="100" required>                
                     &nbsp;<button type="submit" class="btn btn-primary">Gửi</button>
                 </form>
             </div><br/>
@@ -134,5 +137,112 @@
 </div>
 <div class="fixedBtn">
     <a href="tel:0868505050"><img src="{{asset('')}}/images/fixed/calling.gif" alt="calling" width="100px"></a><br/>
-    &nbsp;<button class="btn btn-primary"> <span class="fa fa-calculator"></span> Báo giá</button> <button class="btn btn-primary"><span class="fa fa-car"></span> Đăng ký lái thử</button>
+    &nbsp;<button id="openBaoGiaMain" class="btn btn-primary" data-toggle="modal" data-target="#modalBaoGia"> 
+        <span class="fa fa-calculator"></span> Báo giá</button> 
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalDangKyLaiThu"><span class="fa fa-car"></span> Đăng ký lái thử</button>
 </div>
+
+<!-- The Modal Báo giá -->
+<div class="modal fade" id="modalBaoGia">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title text-danger"><span class="text-center">YÊU CẦU TƯ VẤN, BÁO GIÁ VÀ NHẬN ƯU ĐÃI</span></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6 hyundai-headFont" id="logoBaoGia">
+                <h5 class="text-primary">Hotline: <a href="tel:0868505050">0868 50 50 50</a></h5>
+                <p>&check; Tư vấn bán hàng chuyên nghiệp </p>
+                <p>&check; Tư vấn trả góp </p>
+                <p>&check; Đăng ký, giao xe tận nhà </p>
+                <p>&check; Trải nghiệm mua xe tuyệt vời  </p>
+                <div>
+                    <img class="img-fluid" src="{{asset('')}}/images/footer/demo.png" alt="demo">
+                </div>
+            </div>
+            <div class="col-md-6 bg-light" id="formBaoGia">
+                <form action="{{route('post.data.baogia')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="nguonXinBaoGia">
+                    <p class="hyundai-normalfont">Quý khách vui lòng để lại thông tin, <strong>Hyundai An Giang</strong> sẽ liên hệ ngay</p>
+                    <div class="form-group">
+                        <select id="form_need" name="xeQuanTam" class="form-control" required="required" data-error="Vui lòng chọn">
+                            <option value="" selected disabled>Vui lòng chọn xe quan tâm</option>
+                            @foreach($xe as $row)
+                            <option value="{{$row->xe->name }}">{{$row->xe->name}}</option>
+                            @endforeach
+                        </select>
+                                
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="hoTenBG" class="form-control" placeholder="Họ tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="soDienThoaiBG" class="form-control" placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger btn-block">GỬI THÔNG TIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+      </div>
+      <!-- Modal footer -->
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- The Modal Báo giá-->
+
+
+<!-- The Modal Đăng ký lái thử -->
+<div class="modal fade" id="modalDangKyLaiThu">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title text-danger"><span class="text-center">ĐĂNG KÝ LÁI THỬ</span></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="bg-light" id="formDangKyLaiThu">
+            <form action="{{route('post.data.dangkylaithu')}}" method="post">
+                @csrf
+                <input type="hidden" name="nguonDangKyLaiThu">
+                <p class="hyundai-normalfont">Quý khách vui lòng để lại thông tin, để <strong>Hyundai An Giang</strong> sắp xếp xe lái thử cho quý khách</p>
+                <div class="form-group">
+                    <select id="form_need" name="xeLaiThu" class="form-control" required="required" data-error="Vui lòng chọn">
+                        <option value="" selected disabled>Vui lòng chọn xe lái thử</option>
+                        <option value="Hyundai Custin">Hyundai Custin</option>
+                        <option value="Hyundai Elantra">Hyundai Elantra</option>
+                        <option value="Hyundai Creta">Hyundai Creta</option>
+                        <option value="Hyundai Stargazer">Hyundai Stargazer</option>
+                    </select>                            
+                </div>
+                <div class="form-group">
+                    <input type="text" name="hoTenLaiThu" class="form-control" placeholder="Họ tên" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="soDienThoaiLaiThu" class="form-control" placeholder="Số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger btn-block">ĐĂNG KÝ</button>
+                </div>
+            </form>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!-- The Modal đăng ký lái thử -->

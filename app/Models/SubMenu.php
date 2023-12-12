@@ -9,4 +9,12 @@ class SubMenu extends Model
 {
     use HasFactory;
     protected $table = "sub_menu";
+
+    public function menu() {
+        return $this->belongsTo('App\Models\Menu', 'idMenu', 'id');
+    }
+
+    public function tin() {
+        return $this->hasOne('App\Models\TinTuc','id', 'baiViet');
+    }
 }

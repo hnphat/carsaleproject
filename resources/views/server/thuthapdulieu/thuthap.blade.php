@@ -84,6 +84,7 @@
         <thead>
             <tr class="bg-gradient-lightblue">
                 <th>TT</th>
+                <th>Thời gian tạo</th>
                 <th>Tên khách hàng</th>
                 <th>Số điện thoại</th>
                 <th>Địa chỉ</th>

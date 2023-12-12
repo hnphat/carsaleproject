@@ -18,6 +18,7 @@ let thuThapTable = $('#thuThapTable').DataTable({
     lengthMenu:  [5, 10, 25, 50, 75, 100 ],
     columns: [
         { "data": null },
+        { "data": "ngayTao" },
         { "data": "hoTen" },
         { "data": "soDienThoai" },
         { "data": "diaChi" },

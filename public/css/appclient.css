@@ -11,6 +11,34 @@
     background-color: #f8f8f8;
 }
 
+#menu {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
+#formDangKyLaiThu {
+    padding: 15px;
+}
+#formDangKyLaiThu p{
+    font-size: 14pt;
+}
+#formDangKyLaiThuXe p {
+    font-size: 14pt;
+}
+#formDongGopYKien p {
+    font-size: 14pt;
+}
+#formDatHen p {
+    font-size: 14pt;
+}
+#formBaoGia form {
+    padding-top: 10px;
+}
+#formBaoGia p {
+    font-size: 14pt;
+}
 #logoleft {
     padding-top: 20px;
     padding-left: 50px;
@@ -32,6 +60,10 @@
 .shadow_box {    
     width: 33.33%;
     padding: 5px;
+}
+.shadow_box a {
+    color: black;
+    text-decoration: none;
 }
 .shadow_box img {
     width: 100%;
@@ -107,6 +139,12 @@ nav ul li {
 .tinTucShadow div {
     box-shadow: 0 0 1px lightblue;
 } 
+
+.tinTucShadow div a{
+    color: black;
+    text-decoration: none;
+} 
+
 .tinTucTilte {    
     padding: 5px 10px 5px 10px;
 }
@@ -135,18 +173,25 @@ nav ul li {
     padding: 5px;
     box-shadow: 0 0 3px gainsboro;
 }
+
+.box-img {
+    padding: 5px;
+    width: 30%;
+    height: auto;
+    float: left;
+}
+
 .box-img img{
     width: 100%;
 }
 
-.box-img {
-    padding: 5px;
-    max-width: 200px;
-    height: auto;
+.boxTitle {    
+    padding: 5px 10px 5px 10px;
 }
 
-.boxTilte {    
-    padding: 5px 10px 5px 10px;
+.boxTitle a {
+    color: black;
+    text-decoration: none;
 }
 
 #hotlines {
@@ -197,9 +242,13 @@ nav ul li {
 .sanPhamNoiBat {
     width: 100%;
     height: 100%;
-    background-color: azure;
+    /* background-color: azure; */
     box-shadow: 0 0 1px 0 gray;
     padding: 5px;
+}
+
+.giaXe {
+    color: red;
 }
 
 .sanPhamNoiBat h5 { 
@@ -231,7 +280,8 @@ nav ul li {
     width: 1000px;
 }
 .boxcar {
-    float: left;
+    display: inline-block;
+    max-width: 19%;
 }
 .boxcar img {
     max-width: 200px;
@@ -247,6 +297,43 @@ nav ul li {
     position: fixed;
     left: 0;
     bottom: 0;
+}
+
+#tinTucVeXe {
+    padding: 5px;
+    overflow: hidden;
+    font-size: 14pt;
+}
+
+#tinTucVeXe img {
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tinTucVeXe table img {
+    max-width: 500px;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+#tinTucVeXe table td {
+    padding: 10px;
+}
+
+.breadcrumb-item {
+    font-size: 14pt;
+}
+
+.pagination li{
+    display: inline;
+}
+
+.spNoiBat {
+    font-size: 12pt;
 }
 
 @media only screen and (max-width: 768px) {
@@ -277,6 +364,7 @@ nav ul li {
     #tinTucKhacPanel {
         width: 100%;
     }
+
     #quangCaoPanel {
        display: none;
     }
@@ -290,19 +378,49 @@ nav ul li {
     }
     .boxTitle {
         padding: 0 5px 5px 5px;
-        width: 70%;
+        width: 100%;
     }
+    
     .boxTitle h5 {
         font-size: 80%;
     }
     .boxTitle p {
-        line-height: 12pt;
+        line-height: 16pt;
     }  
+
+    
     .sanPhamNoiBat {
         background-color: white;
         box-shadow: 0 0 0 0 white;
     }
     #navcarbox {
         width: 100%;
+    }
+    .boxcar {
+        display: inline-block;
+        max-width: 200px;
+    }
+
+    #tinTucVeXe img {
+        max-width: 500px;
+        max-height: 300px;
+    }
+
+    #tinTucVeXe table td {
+        display: block;
+    }
+
+    /* #tinTucVeXe table td {
+        display: inline-block;
+        width: 30%;
+    } */
+
+    #tinTucVeXe table td img{
+        width: 100%;
+    }
+
+    #menu {
+        background-color: white;
+        position: static;
     }
 }

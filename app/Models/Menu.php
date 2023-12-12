@@ -9,4 +9,7 @@ class Menu extends Model
 {
     use HasFactory;
     protected $table = "menu";
+    public function submenu() {
+        return $this->hasMany('App\Models\SubMenu','idMenu','id');
+    }
 }

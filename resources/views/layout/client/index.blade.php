@@ -46,6 +46,26 @@
         .hyundai-boldfont {
             font-family: "HyundaiOfficeBold", cursive, sans-serif;
         }
+        #oz-scroll {
+            position:fixed;
+            bottom:80px;
+            right:-80px;
+            height:48px;
+            width:48px;
+            overflow:hidden;
+            display:none;
+            zoom:1;
+            filter:alpha(opacity=60);
+            opacity:.6;
+            -webkit-transition:all .5s ease-in-out;
+            -moz-transition:all .5s ease-in-out;
+            -ms-transition:all .5s ease-in-out;
+            -o-transition:all .5s ease-in-out;
+            transition:all .5s ease-in-out;
+        }
+        #oz-scroll img {max-width:100%}
+        #oz-scroll:hover {opacity:1}
+        .iconScroll {background-image:url("{{asset('images/scroll/style3.png')}}");}
     </style>
     <link rel="stylesheet" href="{{asset('')}}{{mix('css/appclient.css')}}" />
     @yield('local_css')
@@ -54,7 +74,7 @@
 @include('layout.client.header')
 @yield('content')
 @include('layout.client.footer')
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
@@ -64,7 +84,10 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
-</script> -->
+</script>
+<a id="oz-scroll" class="iconScroll" href="#"></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="{{asset('js/oz-scroll-up.js')}}"></script>
 <script src="{{asset('')}}{{mix('js/appclient.js')}}"></script>
 @yield('local_script')
 </body>

@@ -28,7 +28,7 @@ let navTable = $('#navTable').DataTable({
                     for (let i = 0; i < subMenu.length; i++) {
                         const ele = subMenu[i];
                         let isShow = (ele.isShow) ? `<span id='setOff' data-idsub='${ele.id}' class='fa fa-eye text-warning'></span>` : `<span id='setOn' data-idsub='${ele.id}' class='fa fa-eye-slash'></span>`;
-                        txt += `<a href="#">${ele.name}</a> <button id="deleteSubMenu" data-id="${ele.id}" class="btn btn-danger btn-xs">Xóa</button> &nbsp; ${isShow} &nbsp; <a id="getEditSubMenu" href="#" data-idsub='${ele.id}' data-toggle='modal' data-target='#subMenuEditModal'><span class='fa fa-edit text-primary'></span></a><br/>`;
+                        txt += `<a target="_blank" href="${ele.isBaiViet ? './tin-tuc/' + ele.slugBaiViet : ele.link}">${ele.name}</a> <button id="deleteSubMenu" data-id="${ele.id}" class="btn btn-danger btn-xs">Xóa</button> &nbsp; ${isShow} &nbsp; <a id="getEditSubMenu" href="#" data-idsub='${ele.id}' data-toggle='modal' data-target='#subMenuEditModal'><span class='fa fa-edit text-primary'></span></a><br/>`;
                     }
                     return txt;
                 } else {
@@ -40,7 +40,7 @@ let navTable = $('#navTable').DataTable({
             "data": null,
             render: function(data, type, row) {                           
                 if (row.link) {
-                    return `<a href="${row.link}" class="btn btn-info btn-sm">Xem</a>`;
+                    return `<a href="${row.link}" target="_blank" class="btn btn-info btn-sm">Xem</a>`;
                 } else {
                     return "<strong class='text-danger'>Không</strong>";
                 }

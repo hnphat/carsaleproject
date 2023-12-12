@@ -97,7 +97,7 @@
         <option value="KM">Tin khuyến mãi</option>
         <option value="HAGI">Tin Hyundai An Giang</option>
         <option value="KINHNGHIEM">Tin tức và chia sẽ kinh nghiệm</option>
-        <option value="KHAC">Tin khác</option>
+        <option value="KHAC">Tin tuyển dụng</option>
     </select>
   </div> <!-- form-group// -->   
   <label for="">Hình Ảnh</label><br/>

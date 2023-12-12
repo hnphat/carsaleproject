@@ -113,7 +113,7 @@
         @if($data->loaiTin == "KHAC")
             selected="selected"
         @endif
-        >Tin khác</option>
+        >Tin tuyển dụng</option>
     </select>
   </div> <!-- form-group// -->   
   <label for="">Hình Ảnh</label><br/>

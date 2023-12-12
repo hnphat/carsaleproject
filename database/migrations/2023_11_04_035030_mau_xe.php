@@ -18,7 +18,7 @@ class MauXe extends Migration
             $table->integer('idXe')->unsigned();
             $table->foreign('idXe')->references('id')->on('xe');
             $table->string('tenMau');
-            $table->string('maMau')->unique();
+            $table->string('maMau');
             $table->string('hinhAnh');
             $table->integer('anhXoay')->nullable();
             $table->timestamps();

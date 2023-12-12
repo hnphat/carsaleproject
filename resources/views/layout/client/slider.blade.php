@@ -1,21 +1,31 @@
 
 <div id="slider" class="carousel slide" data-ride="carousel">
-
   <!-- Indicators -->
   <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
+    <?php $i = 0; ?>
+    @foreach($slider as $row)
+      <li data-target="#hagiSlider" data-slide-to="{{$i}}" 
+      @if($i == 0)
+      class="active"
+      @endif></li>
+      <?php $i++; ?>
+    @endforeach
   </ul>
   
   <!-- The slideshow -->
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{asset('')}}/images/slider/t.png" alt="Los Angeles">
-    </div>
-    <div class="carousel-item">
-      <img src="{{asset('')}}/images/slider/c.png"  alt="Chicago">
-    </div>
+    <?php $j = 0; ?>
+    @foreach($slider as $row)
+      <div 
+      @if($j == 0)
+        class="carousel-item active"
+      @else
+        class="carousel-item"
+      @endif>
+        <img src="{{asset('upload/slider/' . $row->image)}}" alt="{{$row->name}}">
+      </div>
+      <?php $j++; ?>
+    @endforeach
   </div>
   
   <!-- Left and right controls -->

@@ -13,7 +13,13 @@ class ThuThapController extends Controller
     }
 
     public function loadData() {
-        $data = ThuThap::all();
+        $arr = [];
+        $data = ThuThap::select("*")->orderBy('id','desc')->get();
+        foreach($data as $row) {
+            $temp = $row;
+            $temp->ngayTao = \HelpFunction::revertCreatedAt($row->created_at);
+            array_push($arr, $temp);
+        }
         if ($data)
             return response()->json([
                 'code' => 200,

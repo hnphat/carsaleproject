@@ -9,4 +9,8 @@ class MauXe extends Model
 {
     use HasFactory;
     protected $table = "mau_xe";
+    
+    public function xe() {
+        return $this->belongsTo('App\Models\Xe', 'idXe', 'id');
+    }
 }

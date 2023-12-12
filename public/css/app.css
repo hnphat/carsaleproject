@@ -42,3 +42,9 @@
     min-width : 200px;
     max-width : 650px;
 }
+#noiDungShow {
+    overflow: hidden;
+}
+#noiDungShow img {
+    max-width: 900px;
+}

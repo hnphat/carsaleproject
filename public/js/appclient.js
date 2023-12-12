@@ -11048,6 +11048,13 @@ $('.dropdown-toggle').click(function (e) {
     }
   }
 });
+$("input[name=nguon]").val(window.location);
+$("input[name=nguonNhapEmail]").val(window.location);
+$("input[name=nguonXinBaoGia]").val(window.location);
+$("input[name=nguonDangKyLaiThu]").val(window.location);
+setTimeout(function () {
+  $("#openBaoGiaMain").click();
+}, 5000);
 })();
 
 /******/ })()

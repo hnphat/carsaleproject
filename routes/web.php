@@ -31,9 +31,22 @@ use App\Http\Controllers\ViTriXeController;
 
 Route::get('/', [IndexController::class, 'getIndex']);
 
-Route::get('/tin', [IndexController::class, 'getTin']);
-Route::get('/tinchitiet', [IndexController::class, 'getChiTietTin']);
-Route::get('/xe', [IndexController::class, 'getXe']);
+Route::get('/tincongty', [IndexController::class, 'getTinCongTy']);
+Route::get('/tinkhuyenmai', [IndexController::class, 'getTinKhuyenMai']);
+Route::get('/tin-tuc/{slug}', [IndexController::class, 'getChiTietTin']);
+Route::get('/tinchiase', [IndexController::class, 'getTinChiaSe']);
+Route::get('/tintuyendung', [IndexController::class, 'getTinTuyenDung']);
+Route::get('/dangkylaithuxe', [IndexController::class, 'getDangKyLaiThuXe']);
+Route::get('/gopykhachhang', [IndexController::class, 'getGopY']);
+Route::get('/datlichhen', [IndexController::class, 'getDatHen']);
+Route::get('/san-pham/{slug}', [IndexController::class, 'getTinXe']);
+Route::post('/guithongtin', [IndexController::class, 'guiThongTin'])->name('post.data');
+Route::post('/dangkyemail', [IndexController::class, 'dangKyEmail'])->name('post.data.email');
+Route::post('/guibaogia', [IndexController::class, 'guiBaoGia'])->name('post.data.baogia');
+Route::post('/dangkylaithu', [IndexController::class, 'dangKyLaiThu'])->name('post.data.dangkylaithu');
+Route::post('/gopy', [IndexController::class, 'gopY'])->name('post.data.gopy');
+Route::post('/dathen', [IndexController::class, 'datHen'])->name('post.data.dathen');
+
 
 Route::get('/admin', function() {
     if (Auth::check())

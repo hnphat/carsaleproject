@@ -1,84 +1,34 @@
 <div id="tinTuc" class="container hyundai-normalfont">
     <h3 class="hyundai-headFont">TIN TỨC KHUYẾN MÃI</h3><br/>
     <div class="row text-justify">
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
+        @foreach($tinKM as $row)
+            <div class="col-xs tinTucShadow">
+                <div>
+                    <a href="./tin-tuc/{{$row->slugName}}"><img src="{{asset('upload/tintuc/' . $row->hinhAnh)}}" alt="{{$row->slugName}}"></a>
+                    <div class="tinTucTilte">
+                    <a href="./tin-tuc/{{$row->slugName}}"><h5 class="hyundai-headFont">{{$row->name}}</h5></a>
+                        <p>{{$row->moTa}}</p>
+                    </div>
+                </div>            
+            </div>
+        @endforeach
     </div>
 </div>
 <br/>
 <div id="tinTuc" class="container hyundai-normalfont">
     <h3 class="hyundai-headFont">TIN HYUNDAI AN GIANG</h3><br/>
     <div class="row text-justify">
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
-        <div class="col-xs tinTucShadow">
-            <div>
-                <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                <div class="tinTucTilte">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>            
-        </div>
+        @foreach($tinHAGI as $row)           
+            <div class="col-xs tinTucShadow">
+                <div>
+                    <a href="./tin-tuc/{{$row->slugName}}"><img src="{{asset('upload/tintuc/' . $row->hinhAnh)}}" alt="{{$row->slugName}}"></a>
+                    <div class="tinTucTilte">
+                        <a href="./tin-tuc/{{$row->slugName}}"><h5 class="hyundai-headFont">{{$row->name}}</h5></a>
+                        <p>{{$row->moTa}}</p>
+                    </div>
+                </div>            
+            </div>
+        @endforeach
     </div>
 </div>
 <br/>
@@ -86,50 +36,34 @@
     <h3 class="hyundai-headFont">TIN TỨC VÀ CHIA SẼ KINH NGHIỆM</h3><br/>
     <div class="row text-justify">
         <div class="col-xs" id="tinTucKhacPanel"> 
-            <div class="row rowBoxShadow">
+        @foreach($tinCS as $row) 
+            <div class="rowBoxShadow clearfix">
                 <div class="box-img">
-                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
+                    <a href="./tin-tuc/{{$row->slugName}}"><img src="{{asset('upload/tintuc/' . $row->hinhAnh)}}" alt="{{$row->slugName}}"></a>
                 </div>
                 <div class="boxTitle">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
+                    <a href="./tin-tuc/{{$row->slugName}}"><h5 class="hyundai-headFont">{{$row->name}}</h5></a>
+                    <p>{{$row->moTa}}</p>
                 </div>
             </div>     
-            <div class="row rowBoxShadow">
-                <div class="box-img">
-                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                </div>
-                <div class="boxTitle">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div>       
-            <div class="row rowBoxShadow">
-                <div class="box-img">
-                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                </div>
-                <div class="boxTitle">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div> 
-            <div class="row rowBoxShadow">
-                <div class="box-img">
-                    <img  src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-                </div>
-                <div class="boxTitle">
-                    <h5 class="hyundai-headFont">Khuyến Mãi Hyundai Accent Tháng 10 năm 2023 </h5> 
-                    <p>Đây là khuyến mãi đặc biệt chỉ có trong tháng 10 và có thể kết thúc nhanh</p>
-                </div>
-            </div> 
+        @endforeach
         </div>
         <div class="col-xs" id="quangCaoPanel">
-            <div>
-                <img src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-            </div>   
-            <div>
-                <img src="{{asset('')}}/images/car/demo.jpg" alt="Demo car">
-            </div>   
+            @foreach($randomTin as $row)
+                @if ($row->isTinTuc == 1)
+                    <div>
+                        <a href="./tin-tuc/{{$row->slugName}}">
+                            <img src="{{asset('upload/tintuc/' . $row->hinhAnh)}}" alt="{{$row->slugName}}">
+                        </a>
+                    </div>   
+                @else
+                    <div>
+                    <a href="./san-pham/{{$row->slugName}}">
+                            <img src="{{asset('upload/tinxe/' . $row->hinhAnh)}}" alt="{{$row->slugName}}">
+                        </a>
+                    </div>  
+                @endif
+            @endforeach
         </div>
     </div>
 </div>

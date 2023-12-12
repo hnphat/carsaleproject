@@ -39,8 +39,8 @@ $config['authentication'] = function () {
 $config['licenseName'] = (isset($_SESSION['stage']) && $_SESSION['stage'] == "local") ? 'localhost' : 'hyundaiangiang.com';
 $config['licenseKey']  = (isset($_SESSION['stage']) && $_SESSION['stage'] == "local") ? '1R8RHKPQPV3MHQUW4BGY4SKWENUL6' : '93D3WH7JBHC1ECHDH8MLCU2DTLXBU';
 
-// $config['licenseName'] = 'carsale.hyundaiangiang.com';
-// $config['licenseKey']  = '5AUA64LHMCLF5NR5QHGLNYQTMUEE1';
+// $config['licenseName'] = 'hyundaiangiang.com';
+// $config['licenseKey']  = '93D3WH7JBHC1ECHDH8MLCU2DTLXBU';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -73,7 +73,7 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    // 'baseUrl'      => '/public/upload/ckfinder/', // using for host PA 
+    // 'baseUrl'      => './public/upload/ckfinder/', // using for host PA 
     // 'baseUrl'      => '/carsaleproject/public/upload/ckfinder/', // using for localhost
     'baseUrl'      => (isset($_SESSION['stage']) && $_SESSION['stage'] == "local") ? '/carsaleproject/public/upload/ckfinder/' : '/public/upload/ckfinder/', // using for localhost
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.

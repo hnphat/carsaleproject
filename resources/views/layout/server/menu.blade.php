@@ -105,14 +105,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{route('tuyendung.panel')}}" class="nav-link">
               <i class="nav-icon fa fa-chevron-right"></i>
               <p>
                 Tuyển dụng
               </p>
             </a>
-          </li>
+          </li> -->
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

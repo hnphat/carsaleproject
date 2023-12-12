@@ -31,6 +31,7 @@ class MenuController extends Controller
                 $obj->link = $rowSub->link;
                 $obj->baiViet = $rowSub->baiViet;
                 $obj->isShow = $rowSub->isShow;
+                $obj->slugBaiViet = $rowSub->isBaiViet ? TinTuc::find($rowSub->baiViet)->slugName : "";
                 array_push($subMenu,$obj);
             }
             $temp->subMenu = $subMenu;
