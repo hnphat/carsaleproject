@@ -17,3 +17,8 @@ setTimeout(() => {
   $("#openBaoGiaMain").click();
 }, 5000);
 
+$(document).on('click','#onclickcolor', function(){
+  let srcImage = $(this).data('anhmau');
+  $("#mauxeshow").attr("src", srcImage);
+});
+

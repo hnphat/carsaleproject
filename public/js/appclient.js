@@ -11055,6 +11055,10 @@ $("input[name=nguonDangKyLaiThu]").val(window.location);
 setTimeout(function () {
   $("#openBaoGiaMain").click();
 }, 5000);
+$(document).on('click', '#onclickcolor', function () {
+  var srcImage = $(this).data('anhmau');
+  $("#mauxeshow").attr("src", srcImage);
+});
 })();
 
 /******/ })()

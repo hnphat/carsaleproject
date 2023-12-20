@@ -111,6 +111,11 @@ nav ul li {
 .navbarcolor  li {
     display: inline;
 }
+
+#onclickcolor:hover {
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) {
     .dropdown:hover .dropdown-menu {
         display: block;

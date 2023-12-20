@@ -16,7 +16,7 @@
    <div class="hyundai-normalfont">
         <div class="row">
             <div class="col-md-8">
-                <img class="carimage" src="{{asset('upload/xe/' . $tinXe->xe->hinhAnh)}}" alt="{{$tinXe->xe->name}}">
+                <img id="mauxeshow" class="carimage" src="{{asset('upload/xe/' . $tinXe->xe->hinhAnh)}}" alt="{{$tinXe->xe->name}}">
                 <!-- <h5 class="text-center"><img class="carcolor" src="{{asset('')}}/images/car/360.png" alt="Demo car"></h5> -->
             </div>
             <div class="col-md-4">
@@ -26,7 +26,7 @@
                     <ul class="navbarcolor">
                         @foreach($tinXe->xe->mau as $row)
                             <li> 
-                                <img class="carcolor" src="{{asset('upload/mauxe/' . $row->hinhAnh)}}" alt="{{$row->tenMau}}">
+                                <img id="onclickcolor" data-anhmau="{{asset('upload/mauxe/' . $row->hinhAnh)}}" class="carcolor" src="{{asset('upload/mauxe/' . $row->hinhAnh)}}" alt="{{$row->tenMau}}">
                             </li>
                         @endforeach
                     </ul>         
