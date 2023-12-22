@@ -22,7 +22,11 @@
       @else
         class="carousel-item"
       @endif>
-        <img src="{{asset('upload/slider/' . $row->image)}}" alt="{{$row->name}}">
+      @if ($row->isCar == 0)
+        <a href="{{'./tin-tuc/'.$row->tinTuc->slugName}}"><img src="{{asset('upload/slider/' . $row->image)}}" alt="{{$row->name}}"></a>
+      @else
+        <a href="{{'./san-pham/'.$row->tinXe->slugName}}"><img src="{{asset('upload/slider/' . $row->image)}}" alt="{{$row->name}}"></a>
+      @endif
       </div>
       <?php $j++; ?>
     @endforeach
