@@ -15,7 +15,7 @@ class ViTriXeController extends Controller
     }
 
     public function loadData() {
-        $data = ViTriXe::all();
+        $data = ViTriXe::select("*")->orderBy('id','desc')->get();
         $arr = [];
         foreach($data as $row) {
             $xe = Xe::find($row->idXe);
