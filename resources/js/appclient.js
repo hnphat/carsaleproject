@@ -21,4 +21,3 @@ $(document).on('click','#onclickcolor', function(){
   let srcImage = $(this).data('anhmau');
   $("#mauxeshow").attr("src", srcImage);
 });
-

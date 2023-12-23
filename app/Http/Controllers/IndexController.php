@@ -352,7 +352,8 @@ class IndexController extends Controller
         $data->soDienThoai = $request->soDienThoai;
         $data->isOld = false;
         $data->linkReg = $request->nguon;
-        $data->yeuCauKhachHang = "Quan tâm xe";
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+        $data->yeuCauKhachHang = "[".($isMob ? "Điện thoại" : "Máy tính")."] Quan tâm xe";
         $data->save();
         if ($data)
             return view('client.phanhoi', [
@@ -380,7 +381,8 @@ class IndexController extends Controller
         $data->soDienThoai = "Ẩn danh";
         $data->isOld = false;
         $data->linkReg = $request->nguonNhapEmail;
-        $data->yeuCauKhachHang = "Đăng ký địa chỉ email nhận tin khuyến mãi: " . $request->emailReg;
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+        $data->yeuCauKhachHang = "[".($isMob ? "Điện thoại" : "Máy tính")."] Đăng ký địa chỉ email nhận tin khuyến mãi: " . $request->emailReg;
         $data->save();
         if ($data)
             return view('client.phanhoi', [
@@ -408,7 +410,8 @@ class IndexController extends Controller
         $data->soDienThoai = $request->soDienThoaiBG;
         $data->isOld = false;
         $data->linkReg = $request->nguonXinBaoGia;
-        $data->yeuCauKhachHang = "Báo giá xe";
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+        $data->yeuCauKhachHang = "[".($isMob ? "Điện thoại" : "Máy tính")."] Báo giá xe";
         $data->save();
         if ($data)
             return view('client.phanhoi', [
@@ -436,7 +439,8 @@ class IndexController extends Controller
         $data->soDienThoai = $request->soDienThoaiLaiThu;
         $data->isOld = false;
         $data->linkReg = $request->nguonDangKyLaiThu;
-        $data->yeuCauKhachHang = "Đăng ký lái thử";
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+        $data->yeuCauKhachHang = "[".($isMob ? "Điện thoại" : "Máy tính")."] Đăng ký lái thử";
         $data->save();
         if ($data)
             return view('client.phanhoi', [
@@ -464,7 +468,8 @@ class IndexController extends Controller
         $data->soDienThoai = $request->soDienThoaiDongGop;
         $data->isOld = false;
         $data->linkReg = "";
-        $data->yeuCauKhachHang = "Góp ý: " . $request->noiDungDongGop;
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+        $data->yeuCauKhachHang = "[".($isMob ? "Điện thoại" : "Máy tính")."] Góp ý: " . $request->noiDungDongGop;
         $data->save();
         if ($data)
             return view('client.phanhoi', [
@@ -492,7 +497,8 @@ class IndexController extends Controller
         $data->soDienThoai = $request->soDienThoaiDatHen;
         $data->isOld = false;
         $data->linkReg = "";
-        $data->yeuCauKhachHang = "Đặt lịch hẹn sửa chữa - Ngày: " . \HelpFunction::revertDate($request->ngayDatLich) . " - Nội dung đặt hẹn: " . $request->noiDungHen;
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
+        $data->yeuCauKhachHang = "[".($isMob ? "Điện thoại" : "Máy tính")."] Đặt lịch hẹn sửa chữa - Ngày: " . \HelpFunction::revertDate($request->ngayDatLich) . " - Nội dung đặt hẹn: " . $request->noiDungHen;
         $data->save();
         if ($data)
             return view('client.phanhoi', [
