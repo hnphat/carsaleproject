@@ -246,7 +246,7 @@
   </div>
 </div>
 <!-- The Modal đăng ký lái thử -->
-<div class="snowflakes" aria-hidden="true">
+<!-- <div class="snowflakes" aria-hidden="true">
   <div class="snowflake">
     <div class="inner">❅</div>
   </div>
@@ -283,5 +283,5 @@
   <div class="snowflake">
     <div class="inner">❅</div>
   </div>
-</div>
-<div class="santa"><img src="{{asset('')}}/images/noelpng.gif" alt="" /></div>
+</div> -->
+<!-- <div class="santa"><img src="{{asset('')}}/images/noelpng.gif" alt="" /></div> -->
