@@ -90,5 +90,4 @@ mix.postCss('resources/css/app.css', 'public/css', [
 mix.postCss('resources/css/appclient.css', 'public/css', [    
 ]);
 mix.postCss('resources/css/login.css', 'public/css', [
-    
 ]);
