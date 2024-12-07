@@ -142,6 +142,10 @@
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalDangKyLaiThu"><span class="fa fa-car"></span> Đăng ký lái thử</button>
 </div>
 
+<div class="fixedBtn2">
+    <a href="https://zalo.me/0869505020"><img src="{{asset('')}}/images/zalo.gif" alt="zaling" width="80px"></a>
+</div>
+
 <!-- The Modal Báo giá -->
 <div class="modal fade" id="modalBaoGia">
   <div class="modal-dialog modal-lg">

@@ -209,7 +209,11 @@
             width: 500px;
             height: auto;
         }
-
+        .fixedBtn2 {
+            position: fixed;
+            right:0;
+            bottom:0;
+        }
     </style>
     <link rel="stylesheet" href="{{asset('')}}{{mix('css/appclient.css')}}" />    
     @yield('local_css')
@@ -222,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 @include('layout.client.header')
 @yield('content')
 @include('layout.client.footer')
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
@@ -232,7 +236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
-</script>
+</script> -->
 <a id="oz-scroll" class="iconScroll" href="#"></a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="{{asset('js/oz-scroll-up.js')}}"></script>
