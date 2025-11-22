@@ -81,7 +81,7 @@
     <div id="luuTruPanel">
         <iframe style="padding:0; margin:0; width: 100%; min-height: 500px;" src="
         @if(App::environment() == 'local')
-          http://localhost/carsaleproject/public/dist/ckfinder/ckfinder.html?CKEditor=noiDung&CKEditorFuncNum=1&langCode=en
+          http://localhost/hyundai/public/dist/ckfinder/ckfinder.html?CKEditor=noiDung&CKEditorFuncNum=1&langCode=en
         @else
           https://hyundaiangiang.com/public/dist/ckfinder/ckfinder.html?CKEditor=noiDung&CKEditorFuncNum=1&langCode=en
         @endif" frameborder="0"></iframe>

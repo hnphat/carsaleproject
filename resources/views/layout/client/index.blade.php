@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="images/header/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('image_thumbnail')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}" />
     <!-- Latest compiled and minified CSS -->

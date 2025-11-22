@@ -115,12 +115,12 @@
             <h5>NHẬN ƯU ĐÃI MỚI NHẤT</h5>
             <div>
                 <p class="p-1">Quý khách sẽ không bỏ xót bất kỳ ưu đãi nào mới nhất từ Hyundai An Giang hãy để lại email để nhận những thông tin mới nhất</p>
-                <form class="form-inline" action="{{route('post.data.email')}}" method="post">
+                <!-- <form class="form-inline" action="{{route('post.data.email')}}" method="post">
                     @csrf
                     <input type="hidden" name="nguonNhapEmail">
                     <input type="email" placeholder="Địa chỉ email" name="emailReg" width="100" required>                
                     &nbsp;<button type="submit" class="btn btn-primary">Gửi</button>
-                </form>
+                </form> -->
             </div><br/>
             <p>Kết nối với chúng tôi: 
                 <a href="{{$data['facebook']}}"><img src="{{asset('')}}/images/footer/fb.png" alt="FB" width="50px"></a>

@@ -2,6 +2,20 @@
 @section('title')
     {{$tinTuc->name}}
 @endsection
+@section('image_thumbnail')
+    <!-- Facebook -->
+    <meta property="og:title" content="{{$tinTuc->name}}" />
+    <meta property="og:description" content="{{$tinTuc->moTa}}" />
+    <meta property="og:image" content="{{asset('/upload/tintuc/'.$tinTuc->hinhAnh)}}" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Hyundai An Giang" />
+    <!-- Zalo -->
+    <meta name="zalo:title" content="{{$tinTuc->name}}">
+    <meta name="zalo:description" content="{{$tinTuc->moTa}}">
+    <meta name="zalo:image" content="{{asset('/upload/tintuc/'.$tinTuc->hinhAnh)}}">
+    <meta name="zalo:url" content="{{url()->current()}}">
+@endsection
 @section('local_css')
 @endsection
 @section('content')
